@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1016">
+  <meta name="description" content="Watch Flying-Agent: DJI Tello photography demos, with playback controls and fullscreen viewing.">
+  <title>Flying-Agent / Flight recordings</title>
+  <style>
+    :root { color-scheme: dark; --bg: #0b1016; --line: #293440; --text: #eef3f6; --muted: #a2b0be; --accent: #9ee7df; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: "Avenir Next", "Segoe UI", "PingFang SC", sans-serif; }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: var(--accent); }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
+    main { width: min(1440px, 100%); margin: auto; padding: 24px 32px 32px; }
+    header { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding-bottom: 22px; border-bottom: 1px solid var(--line); }
+    .brand { font-weight: 700; font-size: 19px; letter-spacing: -.6px; }
+    .brand span { color: var(--accent); }
+    .mono { font-family: "SFMono-Regular", Consolas, monospace; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
+    .repo { font-size: 13px; color: var(--muted); }
+    .intro { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin: 24px 0; }
+    .eyebrow { color: var(--accent); margin: 0 0 8px; }
+    h1 { margin: 0; font-size: clamp(26px, 3.5vw, 42px); line-height: 1.15; letter-spacing: -1.4px; font-weight: 600; }
+    .hint { color: var(--muted); font-size: 13px; line-height: 1.7; margin: 0; }
+    nav { display: flex; gap: 6px; padding: 5px; width: fit-content; margin-bottom: 16px; border: 1px solid var(--line); }
+    nav a { padding: 10px 16px; color: var(--muted); font-size: 13px; }
+    nav a[aria-current="true"] { color: var(--bg); background: var(--accent); }
+    .stage { border: 1px solid var(--line); background: #030609; }
+    video { display: block; width: 100%; height: auto; max-height: min(70vh, calc(100svh - 285px)); aspect-ratio: 16 / 9; object-fit: contain; }
+    video:fullscreen { max-height: none; height: 100%; }
+    .caption { display: flex; align-items: start; justify-content: space-between; gap: 24px; padding: 17px 0; border-bottom: 1px solid var(--line); }
+    h2 { font-size: 17px; font-weight: 600; margin: 0 0 6px; }
+    .caption p { margin: 0; max-width: 760px; color: var(--muted); font-size: 13px; line-height: 1.7; }
+    .download { font-size: 12px; color: var(--muted); white-space: nowrap; padding: 3px 0; }
+    footer { margin-top: 18px; display: flex; justify-content: space-between; gap: 16px; color: var(--muted); }
+    #playback-error { color: #ffc3b4; margin: 14px 0; font-size: 13px; }
+    @media (max-width: 640px) {
+      main { padding: 18px 16px 24px; }
+      .intro { display: block; margin: 20px 0; }
+      .hint { margin-top: 12px; }
+      nav { width: 100%; }
+      nav a { flex: 1; text-align: center; padding: 10px 5px; font-size: 12px; }
+      video[data-demo="library"] { aspect-ratio: 9 / 16; max-height: 65vh; }
+      .caption { flex-direction: column; gap: 12px; }
+      footer { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <a class="brand" href="https://github.com/LZR-S/Flying-Agent">Flying<span>-</span>Agent</a>
+      <a class="repo" href="https://github.com/LZR-S/Flying-Agent">View on GitHub ↗</a>
+    </header>
+    <div class="intro">
+      <div>
+        <p class="eyebrow mono">DJI Tello / FPV vision / Field demos</p>
+        <h1>A body that can fly.</h1>
+      </div>
+      <p class="hint">Play. Scrub. Go fullscreen.<br><span lang="zh-CN">播放 · 拖动进度 · 全屏观看</span></p>
+    </div>
+    <nav aria-label="Choose a demo / 选择演示">
+      <a href="#rooftop" data-demo="rooftop" aria-current="true">01 / Rooftop · <span lang="zh-CN">天台</span></a>
+      <a href="#library" data-demo="library">02 / Library · <span lang="zh-CN">图书馆</span></a>
+    </nav>
+    <div class="stage">
+      <video id="player" controls playsinline preload="metadata" data-demo="rooftop" poster="assets/rooftop.jpg" aria-label="Rooftop photography demo / 天台摄影演示" src="https://github.com/LZR-S/Flying-Agent/releases/download/demo-v0.1/flying-agent-demo-4k.mp4">
+        Your browser does not support video playback. <a href="https://github.com/LZR-S/Flying-Agent/releases/download/demo-v0.1/flying-agent-demo-4k.mp4">Download the video.</a>
+      </video>
+    </div>
+    <p id="playback-error" role="alert" hidden>Video could not load. Try reloading, or use “Download original” below.<br><span lang="zh-CN">视频加载失败，请刷新重试，或使用下方链接下载原片。</span></p>
+    <div class="caption" aria-live="polite">
+      <div>
+        <h2 id="clip-title">Rooftop photography / 天台摄影</h2>
+        <p id="clip-description">The complete photography task, with synchronized agent and third-person views. / 双视角同步呈现完整摄影任务。</p>
+      </div>
+      <a id="download" class="download" href="https://github.com/LZR-S/Flying-Agent/releases/download/demo-v0.1/flying-agent-demo-4k.mp4">Download original / 下载原片 ↓</a>
+    </div>
+    <footer class="mono"><span id="clip-format">4K · 01:45 · Synchronized views</span><span>Code: Coming soon</span></footer>
+    <noscript><p>JavaScript is needed to switch clips. <a href="https://github.com/LZR-S/Flying-Agent/releases/download/demo-v0.2/flying-agent-library-look-behind.mp4">Download the library clip.</a></p></noscript>
+  </main>
+  <script>
+    const clips = {
+      rooftop: {
+        source: 'https://github.com/LZR-S/Flying-Agent/releases/download/demo-v0.1/flying-agent-demo-4k.mp4',
+        title: 'Rooftop photography / 天台摄影',
+        description: 'The complete photography task, with synchronized agent and third-person views. / 双视角同步呈现完整摄影任务。',
+        format: '4K · 01:45 · Synchronized views'
+      },
+      library: {
+        source: 'https://github.com/LZR-S/Flying-Agent/releases/download/demo-v0.2/flying-agent-library-look-behind.mp4',
+        title: 'Look before moving / 先看再移动',
+        description: 'Before moving backward into an area it has not yet seen clearly, the agent turns to check the space behind it. / 向尚未看清的后方移动前，先回头确认空间。',
+        format: '1080p · 00:14 · Third-person view'
+      }
+    };
+    const player = document.getElementById('player');
+    const error = document.getElementById('playback-error');
+    function selectClip() {
+      const key = location.hash === '#library' ? 'library' : 'rooftop';
+      const clip = clips[key];
+      if (player.dataset.demo !== key) {
+        player.pause();
+        error.hidden = true;
+        player.dataset.demo = key;
+        player.poster = `assets/${key}.jpg`;
+        player.src = clip.source;
+        player.load();
+      }
+      player.setAttribute('aria-label', clip.title);
+      document.title = `${clip.title} · Flying-Agent`;
+      document.getElementById('clip-title').textContent = clip.title;
+      document.getElementById('clip-description').textContent = clip.description;
+      document.getElementById('clip-format').textContent = clip.format;
+      document.getElementById('download').href = clip.source;
+      document.querySelectorAll('nav a').forEach(link => {
+        link.setAttribute('aria-current', String(link.dataset.demo === key));
+      });
+    }
+    player.addEventListener('error', () => { error.hidden = false; });
+    window.addEventListener('hashchange', selectClip);
+    selectClip();
+  </script>
+</body>
+</html>
