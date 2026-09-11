@@ -18,7 +18,7 @@
 
 [播放天台完整版](https://lzr-s.github.io/Flying-Agent/#rooftop) · [播放图书馆片段](https://lzr-s.github.io/Flying-Agent/#library)
 
-点击预览即可播放、拖动进度或全屏观看。
+极简电子配乐版，可拖动进度或全屏观看。
 
 未来，我们将探索主动观察、空间巡检、创意记录与多智能体协作，让飞行本体在更丰富的环境中完成有价值、有意思的事。
 

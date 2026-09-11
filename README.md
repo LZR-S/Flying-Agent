@@ -18,7 +18,7 @@ The rooftop demo shows the complete task. A library clip highlights behavior in 
 
 [Watch rooftop demo · 4K](https://lzr-s.github.io/Flying-Agent/#rooftop) · [Watch library clip](https://lzr-s.github.io/Flying-Agent/#library)
 
-Click either preview to watch with playback controls and fullscreen.
+Minimal electronic soundtrack edition. Click either preview to watch with playback controls and fullscreen.
 
 Next, we want to explore active observation, spatial inspection, creative recording, and collaboration among agents—helping a flying embodiment do useful and interesting things across more environments.
 

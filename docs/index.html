@@ -66,31 +66,31 @@
       <a href="#library" data-demo="library">02 / Library · <span lang="zh-CN">图书馆</span></a>
     </nav>
     <div class="stage">
-      <video id="player" controls playsinline preload="metadata" data-demo="rooftop" poster="assets/rooftop.jpg" aria-label="Rooftop photography demo / 天台摄影演示" src="https://github.com/LZR-S/Flying-Agent/releases/download/demo-v0.1/flying-agent-demo-4k.mp4">
-        Your browser does not support video playback. <a href="https://github.com/LZR-S/Flying-Agent/releases/download/demo-v0.1/flying-agent-demo-4k.mp4">Download the video.</a>
+      <video id="player" controls playsinline preload="metadata" data-demo="rooftop" poster="assets/rooftop.jpg" aria-label="Rooftop photography demo / 天台摄影演示" src="https://github.com/LZR-S/Flying-Agent/releases/download/demo-v0.3/flying-agent-rooftop-minimal-electronic-4k.mp4">
+        Your browser does not support video playback. <a href="https://github.com/LZR-S/Flying-Agent/releases/download/demo-v0.3/flying-agent-rooftop-minimal-electronic-4k.mp4">Download the video.</a>
       </video>
     </div>
-    <p id="playback-error" role="alert" hidden>Video could not load. Try reloading, or use “Download original” below.<br><span lang="zh-CN">视频加载失败，请刷新重试，或使用下方链接下载原片。</span></p>
+    <p id="playback-error" role="alert" hidden>Video could not load. Try reloading, or use “Download video” below.<br><span lang="zh-CN">视频加载失败，请刷新重试，或使用下方链接下载视频。</span></p>
     <div class="caption" aria-live="polite">
       <div>
         <h2 id="clip-title">Rooftop photography / 天台摄影</h2>
         <p id="clip-description">The complete photography task, with synchronized agent and third-person views. / 双视角同步呈现完整摄影任务。</p>
       </div>
-      <a id="download" class="download" href="https://github.com/LZR-S/Flying-Agent/releases/download/demo-v0.1/flying-agent-demo-4k.mp4">Download original / 下载原片 ↓</a>
+      <a id="download" class="download" href="https://github.com/LZR-S/Flying-Agent/releases/download/demo-v0.3/flying-agent-rooftop-minimal-electronic-4k.mp4">Download video / 下载视频 ↓</a>
     </div>
     <footer class="mono"><span id="clip-format">4K · 01:45 · Synchronized views</span><span>Code: Coming soon</span></footer>
-    <noscript><p>JavaScript is needed to switch clips. <a href="https://github.com/LZR-S/Flying-Agent/releases/download/demo-v0.2/flying-agent-library-look-behind.mp4">Download the library clip.</a></p></noscript>
+    <noscript><p>JavaScript is needed to switch clips. <a href="https://github.com/LZR-S/Flying-Agent/releases/download/demo-v0.3/flying-agent-library-minimal-electronic.mp4">Download the library clip.</a></p></noscript>
   </main>
   <script>
     const clips = {
       rooftop: {
-        source: 'https://github.com/LZR-S/Flying-Agent/releases/download/demo-v0.1/flying-agent-demo-4k.mp4',
+        source: 'https://github.com/LZR-S/Flying-Agent/releases/download/demo-v0.3/flying-agent-rooftop-minimal-electronic-4k.mp4',
         title: 'Rooftop photography / 天台摄影',
         description: 'The complete photography task, with synchronized agent and third-person views. / 双视角同步呈现完整摄影任务。',
         format: '4K · 01:45 · Synchronized views'
       },
       library: {
-        source: 'https://github.com/LZR-S/Flying-Agent/releases/download/demo-v0.2/flying-agent-library-look-behind.mp4',
+        source: 'https://github.com/LZR-S/Flying-Agent/releases/download/demo-v0.3/flying-agent-library-minimal-electronic.mp4',
         title: 'Look before moving / 先看再移动',
         description: 'Before moving backward into an area it has not yet seen clearly, the agent turns to check the space behind it. / 向尚未看清的后方移动前，先回头确认空间。',
         format: '1080p · 00:14 · Third-person view'
