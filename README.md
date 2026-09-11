@@ -1,12 +1,16 @@
 # Flying-Agent
 
-**Language-guided agents for the physical world.**
+**Zero-shot drone photography. First-person vision. Physical-world action.**
 
 English · [简体中文](README.zh-CN.md)
 
 **Real-world demo available** · **Early research prototype** · **Source code: Coming soon**
 
-Flying-Agent explores AI agents that understand a goal, observe their surroundings, and act through a drone. We are starting with autonomous photography: turning a natural-language request into a photograph captured in the real world.
+Inspired by recent GPT6-Astra robot-arm demos, we tried a different embodiment: **let an AI agent control a drone to take a photograph, zero-shot.**
+
+Flying-Agent turns a natural-language photography request into physical action. It sees the scene through a first-person RGB camera, adjusts its viewpoint and composition as it goes, and checks the space it is about to move into.
+
+One behavior that stood out: **before moving backward into an unseen area, it turns to look behind and checks whether the way is clear.**
 
 ## Demo: a flying photographer
 
@@ -20,12 +24,15 @@ The video shows Flying-Agent controlling a physical drone on an Innocell rooftop
 
 The left panel shows the bilingual agent interface, including the camera view and recorded decisions and actions. The right panel shows synchronized third-person footage. The animation above contains selected excerpts; the full video preserves the complete 1 minute 45 second demo, with labeled still frames where the third-person recording is unavailable.
 
-What this first demo brings together:
+## What we are exploring
 
-- **Intent to action.** A photography goal expressed in ordinary language becomes a sequence of physical actions.
-- **A viewpoint that can move.** The drone changes its orientation and height to work toward the requested framing.
-- **Feedback from the real world.** The agent observes the scene as the task progresses and adjusts its next action.
-- **A visible outcome.** A captured photograph and a readable record of the task make the result inspectable.
+- **Zero-shot task execution.** Give the agent a photography goal in ordinary language. Here, zero-shot means using pretrained models without task-specific fine-tuning for this demo.
+- **First-person visual perception.** The drone's RGB camera provides its view of the scene.
+- **Online composition.** The agent adjusts its orientation and height in response to what it sees and the framing requested.
+- **Scene adaptation.** Decisions respond to the current scene and photography goal. We will share broader generalization results as more demos are released.
+- **Obstacle-aware motion.** The system checks the intended path and can reject a move when clearance is unknown or insufficient. Looking behind before a retreat is one concrete example.
+
+These are capabilities of the agent system as a whole. The current prototype's visual obstacle checks cover a bounded setting; broader robustness remains part of our research.
 
 ## Why a flying agent?
 
