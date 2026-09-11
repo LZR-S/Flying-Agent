@@ -1,71 +1,23 @@
 # Flying-Agent
 
-**Zero-shot 无人机摄影：第一人称视觉，真实世界行动。**
-
 [English](README.md) · 简体中文
 
-**真机 Demo 已发布** · **早期研究原型** · **源代码：Coming soon**
+**我们希望赋予 AI Agent 一个可以飞行的本体。**区别于屏幕中的数字智能体，以及人形机器人、机械臂等形态，Flying-Agent 将移动、观察与行动结合，探索智能体在可移动本体下的能力边界与应用场景极限。无人机摄影只是起点。
 
-最近，GPT6-Astra 控制机械臂的 Demo 让我们很感兴趣。我们也做了一个小实验：**让 AI Agent zero-shot 控制无人机拍照。**
+当前使用 **DJI Tello** 无人机，仅依靠 **FPV 第一人称视觉**感知陌生环境，zero-shot 执行自然语言摄影任务。用户只需说“给窗台边的男生拍一张全身照”，智能体就会观察场景、在线调整视角与构图、拍照并降落。
 
-通过第一人称 RGB 画面观察环境，根据眼前的场景在线调整视角与构图，并在移动前检查要经过的空间。给它一句摄影指令，让它在真实世界中完成拍摄。
+天台演示展示完整流程；图书馆片段呈现另一个场景中的行为：**准备向尚未看清的后方移动时，它会先回头看看，确认后方是否有足够空间。**观察也可以是一种主动行动。
 
-其中一个让我们印象很深的行为是：**准备向尚未看清的后方移动时，它会先回头看看，确认后方是否有足够空间。**
+<table>
+<tr><th>天台摄影</th><th>图书馆：先看再移动</th></tr>
+<tr>
+<td><a href="https://github.com/LZR-S/Flying-Agent/releases/download/demo-v0.1/flying-agent-demo-4k.mp4"><img src="assets/demo-preview.gif" alt="天台摄影双视角节选" width="560"></a></td>
+<td><a href="https://github.com/LZR-S/Flying-Agent/releases/download/demo-v0.2/flying-agent-library-look-behind.mp4"><img src="assets/library-look-behind.gif" alt="图书馆转身观察片段裁剪预览" width="280"></a></td>
+</tr>
+</table>
 
-## Demo：会飞的摄影智能体
+[天台完整版](https://github.com/LZR-S/Flying-Agent/releases/download/demo-v0.1/flying-agent-demo-4k.mp4) · [图书馆完整片段](https://github.com/LZR-S/Flying-Agent/releases/download/demo-v0.2/flying-agent-library-look-behind.mp4)
 
-> “给窗台边的男生拍一张全身照。”
+未来，我们将探索主动观察、空间巡检、创意记录与多智能体协作，让飞行本体在更丰富的环境中完成有价值、有意思的事。
 
-[![Flying-Agent Demo 节选：同步展示智能体界面与第三人称实拍](assets/demo-preview.gif)](https://github.com/LZR-S/Flying-Agent/releases/tag/demo-v0.1)
-
-**[获取完整 4K Demo](https://github.com/LZR-S/Flying-Agent/releases/download/demo-v0.1/flying-agent-demo-4k.mp4)** · [Demo 发布页](https://github.com/LZR-S/Flying-Agent/releases/tag/demo-v0.1)
-
-视频展示了 Flying-Agent 在 Innocell 天台操控真实无人机完成摄影任务的过程：接收摄影指令，起飞并转向拍摄对象，调整视角与构图，保存照片，然后降落。界面最后展示拍摄结果，以及智能体对摄影要求的自评。
-
-左侧是中英双语智能体界面，包含相机画面、记录下来的决策与动作；右侧是时间同步的第三人称实拍。上方动图为片段节选，完整视频保留了约 1 分 45 秒的演示流程，并明确标注第三人称素材缺失时使用的静帧。
-
-## 我们正在探索什么
-
-- **Zero-shot 任务执行。** 用自然语言提出摄影目标。这里的 zero-shot 指使用预训练模型完成任务，没有为这个 Demo 做任务专用微调。
-- **第一人称视觉感知。** 通过无人机的 RGB 相机理解眼前的场景。
-- **在线构图。** 根据当前画面和摄影要求，调整朝向与高度。
-- **场景适应与泛化。** 根据实际场景和任务目标作出决策；随着更多 Demo 发布，我们会分享更广泛的泛化验证结果。
-- **具备障碍意识的移动。** 检查预期路径，在空间未知或不足时可以拒绝移动。“后退前先回头看”就是一个具体例子。
-
-这些行为来自完整的智能体系统。当前原型的视觉避障针对有限场景，更广泛的可靠性仍是我们的研究方向。
-
-## 为什么是 Flying-Agent？
-
-对 Physical Agent 而言，观察的位置本身就是行动的一部分。移动相机，可以发现拍摄对象、改变构图，也可以补充下一步决策所需的信息。
-
-摄影为探索这一点提供了一个具体任务：智能体需要把人的意图、不断变化的视觉场景、物理动作，以及可供人查看的结果连接起来。我们希望以此为起点，探索能够走出屏幕、在真实环境中完成有价值任务的智能体。
-
-## 对 Physical Agent 的一些畅想
-
-随着项目推进，我们希望探索以下方向：
-
-| 方向 | 我们希望实现的体验 |
-| --- | --- |
-| **创作伙伴** | 帮助人寻找更好的拍摄视角、完成人像构图，并记录简短的视觉故事。 |
-| **主动观察** | 为补充缺失信息而移动，从多个角度观察场景，用视觉证据回答问题。 |
-| **空间巡检** | 辅助记录空间或物体，并回到相应视角，理解前后发生了什么变化。 |
-| **物理协作** | 与人、地面机器人及其他智能体合作，完成需要不同观察视角的任务。 |
-
-我们希望物理行动能够被理解，执行结果能够被检查，人始终保有控制权。以上是未来研究方向，当前公开 Demo 聚焦于摄影任务。
-
-## 持续开源计划
-
-**源代码：Coming soon。**
-
-首个版本公开项目概括与 Demo。核心实现和详细技术文档将在后续版本中陆续发布。
-
-- [x] 发布首个真机摄影 Demo。
-- [x] 介绍项目方向。
-- [ ] 开源实现、环境配置说明与可复现示例。
-- [ ] 持续发布新 Demo，拓展能够完成的任务。
-
-我们会随着 Flying-Agent 的发展持续开源，分享代码、实验与 Demo，让它在物理世界中完成更多有价值、有意思的事。
-
-## 关注进展
-
-欢迎 Star 或 Watch 仓库，关注后续版本。也欢迎在 [Issues](https://github.com/LZR-S/Flying-Agent/issues) 中交流有价值的任务、创意 Demo，以及 Physical Agent 的研究想法。
+**代码 Coming soon。**目前公开项目介绍与演示，后续持续开源代码、文档和更多任务示例。

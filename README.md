@@ -1,71 +1,23 @@
 # Flying-Agent
 
-**Zero-shot drone photography. First-person vision. Physical-world action.**
-
 English · [简体中文](README.zh-CN.md)
 
-**Real-world demo available** · **Early research prototype** · **Source code: Coming soon**
+**We want to give AI agents a body that can fly.** Flying-Agent explores an embodiment distinct from screen-based digital agents, humanoid robots, and robotic arms. By bringing movement, observation, and action together, we aim to explore the limits of what agents with mobile bodies can do and where they can be useful. Drone photography is our starting point.
 
-Inspired by recent GPT6-Astra robot-arm demos, we tried a different embodiment: **let an AI agent control a drone to take a photograph, zero-shot.**
+We use a **DJI Tello**, relying solely on **first-person vision (FPV) for scene perception** in unfamiliar environments and carrying out natural-language photography tasks zero-shot. Given “Take a full-body photo of the man by the window,” the agent observes the scene, adjusts its viewpoint and composition online, captures a photograph, and lands.
 
-Flying-Agent turns a natural-language photography request into physical action. It sees the scene through a first-person RGB camera, adjusts its viewpoint and composition as it goes, and checks the space it is about to move into.
+The rooftop demo shows the complete task. A library clip highlights behavior in another setting: **before moving backward into an area it has not yet seen clearly, the agent turns to look behind and checks whether there is enough room.** Observation can itself be a deliberate action.
 
-One behavior that stood out: **before moving backward into an unseen area, it turns to look behind and checks whether the way is clear.**
+<table>
+<tr><th>Rooftop photography</th><th>Library: look before moving</th></tr>
+<tr>
+<td><a href="https://github.com/LZR-S/Flying-Agent/releases/download/demo-v0.1/flying-agent-demo-4k.mp4"><img src="assets/demo-preview.gif" alt="Synchronized rooftop photography demo excerpts" width="560"></a></td>
+<td><a href="https://github.com/LZR-S/Flying-Agent/releases/download/demo-v0.2/flying-agent-library-look-behind.mp4"><img src="assets/library-look-behind.gif" alt="Cropped library preview showing the drone turn to inspect its surroundings" width="280"></a></td>
+</tr>
+</table>
 
-## Demo: a flying photographer
+[Full rooftop demo · 4K](https://github.com/LZR-S/Flying-Agent/releases/download/demo-v0.1/flying-agent-demo-4k.mp4) · [Full library clip](https://github.com/LZR-S/Flying-Agent/releases/download/demo-v0.2/flying-agent-library-look-behind.mp4)
 
-> “Take a full-body photo of the man by the window.”
+Next, we want to explore active observation, spatial inspection, creative recording, and collaboration among agents—helping a flying embodiment do useful and interesting things across more environments.
 
-[![Flying-Agent demo excerpts: synchronized agent interface and third-person drone footage](assets/demo-preview.gif)](https://github.com/LZR-S/Flying-Agent/releases/tag/demo-v0.1)
-
-**[Get the full 4K demo](https://github.com/LZR-S/Flying-Agent/releases/download/demo-v0.1/flying-agent-demo-4k.mp4)** · [Demo release](https://github.com/LZR-S/Flying-Agent/releases/tag/demo-v0.1)
-
-The video shows Flying-Agent controlling a physical drone on an Innocell rooftop. The agent takes a photography request, takes off, turns toward the subject, adjusts its viewpoint and framing, saves a photograph, and lands. The interface then displays the result and the agent's own assessment of the photography requirements.
-
-The left panel shows the bilingual agent interface, including the camera view and recorded decisions and actions. The right panel shows synchronized third-person footage. The animation above contains selected excerpts; the full video preserves the complete 1 minute 45 second demo, with labeled still frames where the third-person recording is unavailable.
-
-## What we are exploring
-
-- **Zero-shot task execution.** Give the agent a photography goal in ordinary language. Here, zero-shot means using pretrained models without task-specific fine-tuning for this demo.
-- **First-person visual perception.** The drone's RGB camera provides its view of the scene.
-- **Online composition.** The agent adjusts its orientation and height in response to what it sees and the framing requested.
-- **Scene adaptation.** Decisions respond to the current scene and photography goal. We will share broader generalization results as more demos are released.
-- **Obstacle-aware motion.** The system checks the intended path and can reject a move when clearance is unknown or insufficient. Looking behind before a retreat is one concrete example.
-
-These are capabilities of the agent system as a whole. The current prototype's visual obstacle checks cover a bounded setting; broader robustness remains part of our research.
-
-## Why a flying agent?
-
-For a physical agent, where it looks is part of what it does. Moving a camera can reveal a subject, change a composition, or provide the evidence needed for the next decision.
-
-Photography gives us a concrete place to explore this idea. The agent has to connect human intent with a changing visual scene, physical motion, and an outcome that people can inspect. We see this as an early step toward agents that can carry out useful tasks beyond a screen.
-
-## Where we want to go
-
-These are directions we want to explore as the project develops:
-
-| Direction | What we would like to make possible |
-| --- | --- |
-| **Creative assistance** | Help people find better viewpoints, compose portraits, and capture short visual stories. |
-| **Active observation** | Move to gather a missing view, look at a scene from multiple angles, and answer questions with visual evidence. |
-| **Spatial inspection** | Help document a space or an object and revisit viewpoints to understand what has changed. |
-| **Physical collaboration** | Work with people, ground robots, and other agents on tasks that benefit from complementary perspectives. |
-
-Across these directions, we want physical actions to remain understandable, outcomes to be inspectable, and people to stay in control. The broader capabilities above are research goals; the current public demonstration focuses on photography.
-
-## Open-source roadmap
-
-**Source code: Coming soon.**
-
-This initial release shares the project overview and demo. The core implementation and detailed technical documentation will follow in future releases.
-
-- [x] Publish the first real-world photography demo.
-- [x] Share the project direction.
-- [ ] Open-source the implementation, setup instructions, and reproducible examples.
-- [ ] Release more demos and expand the set of supported tasks.
-
-We will continue open-sourcing our work as Flying-Agent develops, sharing code, experiments, and demos that help it do more useful and interesting things in the physical world.
-
-## Follow along
-
-Star or watch this repository for upcoming releases. Ideas for useful tasks, creative demos, and physical-agent research are welcome in [Issues](https://github.com/LZR-S/Flying-Agent/issues).
+**Code: Coming soon.** We are sharing the project overview and demos now, and will continue open-sourcing code, documentation, and examples for more tasks.
