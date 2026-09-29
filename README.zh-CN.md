@@ -28,7 +28,7 @@ Flying-Agent 研究的不是“AI Agent 能不能让无人机动起来”，而�
 
 [34 秒海岸露台演示](https://lzr-s.github.io/Flying-Agent/#webots)剪辑呈现了一次 Webots 人像摄影任务：Agent 使用构图参考、调整相机机位、比较实时画面与预期构图，最后拍下人像。参考图是合成图，最终照片来自仿真相机。这个演示重点是**通过行动完成摄影判断**：无人机移动后，人物大小、画面边界、头顶留白和背景随之改变，Agent 再依据真实相机画面检查结果。
 
-<a href="https://lzr-s.github.io/Flying-Agent/#webots"><img src="assets/webots-photography-preview.jpg" alt="Webots 海岸露台摄影演示中的最终人像" width="760"></a>
+<a href="https://lzr-s.github.io/Flying-Agent/#webots"><img src="assets/webots-photography-preview.gif" alt="Webots 海岸露台摄影演示的动态节选" width="760"></a>
 
 [观看 Webots 摄影演示](https://lzr-s.github.io/Flying-Agent/#webots)
 
