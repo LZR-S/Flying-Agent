@@ -50,6 +50,110 @@ Webots 仿真与 DJI Tello 真机使用相同的任务接口。Webots 的 Mavic 
 
 ![Flying-Agent 摄影 Harness：视觉空间记忆、生成式美学设计与安全执行](assets/agent-harness-framework-v1.png)
 
+## 环境安装
+
+需要 **Python 3.12 或更高版本**、[Git LFS](https://git-lfs.com/)，以及用于仿真的 [Webots R2025a](https://github.com/cyberbotics/webots/releases/tag/R2025a)。当前启动流程已在 macOS 验证；仅使用 Tello 真机时不需要安装 Webots。
+
+```sh
+git lfs install
+git clone https://github.com/LZR-S/Flying-Agent.git
+cd Flying-Agent
+git lfs pull
+python3.12 -m venv .venv
+source .venv/bin/activate
+python -m pip install -e '.[dev]'
+cp .env.example .env
+```
+
+大型 GLB 资产使用 Git LFS。请通过 Git 克隆并执行 `git lfs pull`；仅下载 GitHub 源码压缩包可能无法取得完整资产。后续命令均在仓库根目录、已激活的虚拟环境中执行。
+
+### API 配置
+
+编辑本地 `.env`，填入自己的接口地址和 API key：
+
+| 模型接口 | 配置项 | 使用方式 |
+| --- | --- | --- |
+| OpenLux | `BASE_URL` / `API_KEY` | 命令行通过 `--env-file .env` 默认使用；工作台也可选择 |
+| 阿里云官方 | `AliCloud_url` / `AliCloud_key` | 在工作台选择阿里云接口 |
+| 自定义 | `DRONE_PHOTO_VLM_BASE_URL` / `DRONE_PHOTO_VLM_API_KEY` | 命令行从 `.env` 或环境变量读取；工作台选择自定义接口 |
+
+选择所用服务商支持的、具备视觉与工具调用能力的模型。下方命令行示例使用当前默认模型 `gemini-3.6-flash`，可按需修改 `--model`。模型调用会产生相应服务商的 API 费用。凭据、虚拟环境和运行记录均不纳入 Git。
+
+可选的构图参考图工具通过 Images Edits 接口调用 `gpt-image-2`。生图凭据默认取 `BASE_URL` / `API_KEY`，不跟随决策模型接口的选择变化。需要独立生图服务时，成对设置 `DRONE_PHOTO_IMAGE_BASE_URL` / `DRONE_PHOTO_IMAGE_API_KEY`。如果只配置了 `DRONE_PHOTO_VLM_*`，启用参考图还需单独配置生图凭据；缺少生图凭据不影响普通摄影。命令行可用 `--no-reference`，工作台可取消“参考图工具”来关闭生图。参考图是合成构图建议，不能用于导航或作为最终照片交付。
+
+## 使用指南
+
+### 工作台
+
+```sh
+python -m drone_agent dashboard --port 8766 --env-file .env --open
+```
+
+工作台地址为 <http://127.0.0.1:8766>；不需要自动打开浏览器时可省略 `--open`。选择场景、模型接口、模型并填写任务后启动，可查看实时画面、工具调用、候选照片和历史报告。界面首次打开默认显示英文，顶栏可切换中文/英文，语言选择会保存在浏览器中。
+
+工作台用于启动 **Webots 仿真**和回放已有运行；Tello 真机通过下方命令行启动。控制操作和报告下载详见[工作台指南](docs/workbench.md)。更新代码后需重启已有工作台服务。
+
+### Webots 命令行
+
+```sh
+python -m drone_agent run \
+  --scenario hidden \
+  --model gemini-3.6-flash \
+  --brief '找到人物，拍一张全身照' \
+  --env-file .env
+```
+
+默认后端为 `webots`，场景包括 `facing`、`open`、`hidden` 和 `terrace`。默认仿真器路径为 `/Applications/Webots.app/Contents/MacOS/webots`，可用 `--webots /path/to/webots` 指定其他安装位置。世界文件使用固定 R2025a PROTO 来源，首次加载可能需要网络。
+
+### DJI Tello 命令行
+
+在同一虚拟环境中安装真机可选依赖：
+
+```sh
+python -m pip install -e '.[dev,tello]'
+```
+
+开启 Tello 并将电脑连接到其 Wi-Fi，同时保留模型 API 所需的互联网连接，例如通过另一块网络接口。以下命令会控制真实飞机并可能起飞，请在空旷飞行区域、有人值守时运行。
+
+```sh
+python -m drone_agent run \
+  --backend tello \
+  --model gemini-3.6-flash \
+  --brief '找到人物，拍一张全身照' \
+  --env-file .env
+```
+
+默认飞机地址为 `192.168.10.1`，可用 `--tello-ip` 覆盖。飞行动作语义与遥测限制详见 [Tello 动作契约与后端说明](docs/tello-profile.md)。
+
+### 画幅与运行结果
+
+两个后端均支持 `--default-aspect-ratio`（默认 `16:9`）、`--guides none|thirds|golden`（默认 `thirds`）和 `--no-reference`。默认 `--framing-policy max_native` 按指定比例保留最大的原生裁切区域；仅在任务允许更小裁切时，于启动前选择 `--framing-policy flexible`，模型不能自行切换该策略。
+
+运行输出保存在 `runs/`，包含照片、模型请求与回复、事件、评测结果、JSON/CSV 导出及 HTML 报告。可用 `--output /path/to/run` 指定新的运行目录。重新生成已有运行的评测与报告时，将 `RUN_ID` 替换为对应的目录名：
+
+```sh
+python -m drone_agent evaluate runs/RUN_ID
+```
+
+完整命令行选项可通过 `python -m drone_agent run --help` 查看。
+
+## 离线测试
+
+```sh
+python -m pytest
+```
+
+离线测试不启动 Webots，也不调用模型 API。安装 `.[dev,tello]` 后，还会通过模拟网络传输测试真实 DJITelloPy 接收器代码，不连接飞机。未安装该可选依赖时，仅跳过 SDK 接收器测试，其余 Tello 后端故障测试仍运行。
+
+仓库独立提供 v1 运行时，不分发旧版冻结快照 `baseline/v0/`；缺少该快照时，仅跳过依赖它的测试。历史 `benchmark` 对照入口需要另行准备该快照。
+
+## 技术文档
+
+- [模型工具协议与上下文](docs/native-tools.md)
+- [摄影工作台](docs/workbench.md)
+- [Tello 动作契约与仿真边界](docs/tello-profile.md)
+- [场景资产清单](configs/assets.json)
+
 ## 后续计划
 
 我们计划持续完善和更新 Harness，公开更多完整演示，以及供外部检查任务执行过程的文档。Harness 也会持续围绕感知、构图和可靠飞行改进。
