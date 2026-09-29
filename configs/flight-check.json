@@ -1,0 +1,113 @@
+[
+  {
+    "tool": "act",
+    "arguments": {
+      "kind": "speed",
+      "value": 50
+    }
+  },
+  {
+    "tool": "act",
+    "arguments": {
+      "kind": "takeoff",
+      "value": 0
+    }
+  },
+  {
+    "tool": "act",
+    "arguments": {
+      "kind": "forward",
+      "value": 50
+    }
+  },
+  {
+    "tool": "act",
+    "arguments": {
+      "kind": "back",
+      "value": 50
+    }
+  },
+  {
+    "tool": "act",
+    "arguments": {
+      "kind": "left",
+      "value": 50
+    }
+  },
+  {
+    "tool": "act",
+    "arguments": {
+      "kind": "right",
+      "value": 50
+    }
+  },
+  {
+    "tool": "act",
+    "arguments": {
+      "kind": "up",
+      "value": 30
+    }
+  },
+  {
+    "tool": "act",
+    "arguments": {
+      "kind": "down",
+      "value": 30
+    }
+  },
+  {
+    "tool": "act",
+    "arguments": {
+      "kind": "cw",
+      "value": 15
+    }
+  },
+  {
+    "tool": "act",
+    "arguments": {
+      "kind": "ccw",
+      "value": 15
+    }
+  },
+  {
+    "tool": "act",
+    "arguments": {
+      "kind": "hold",
+      "value": 1
+    }
+  },
+  {
+    "tool": "capture"
+  },
+  {
+    "tool": "review_photo",
+    "arguments": {
+      "image_id": "shot_000001",
+      "checks": [
+        {
+          "requirement": "Meet the original photography brief",
+          "status": "unknown",
+          "evidence": "This scripted flight check has no visual judge; it cannot assess the image."
+        }
+      ],
+      "quality_issues": [
+        "Photo quality has not been assessed."
+      ],
+      "next_step": "finish",
+      "rationale": "End the engineering flight check with a candidate for independent review."
+    }
+  },
+  {
+    "tool": "act",
+    "arguments": {
+      "kind": "land",
+      "value": 0
+    }
+  },
+  {
+    "tool": "finish",
+    "arguments": {
+      "shot_id": "shot_000001"
+    }
+  }
+]

@@ -1,0 +1,273 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/SandyGround.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/road/protos/Road.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/Pavement.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/buildings/protos/Windmill.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/buildings/protos/SmallManor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/factory/manhole/protos/SquareManhole.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/factory/containers/protos/CardboardBox.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/vehicles/protos/tesla/TeslaModel3Simple.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/trees/protos/Pine.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/trees/protos/Forest.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/dji/mavic/protos/Mavic2Pro.proto"
+
+WorldInfo {
+  info [
+    "ClawBench-UAV drone-photography benchmark world — OPEN / FACING-AWAY variant."
+    "Scenario B of three. Sibling worlds: bench_photo_hidden.wbt (A, occluded)"
+    "and bench_photo_facing.wbt (C, target in view at spawn). All three share"
+    "the same spawn pad and the same PERSON_B position; they differ ONLY in"
+    "the manor placement and the drone's initial yaw, so a difference in"
+    "outcome is attributable to the difficulty being varied and nothing else."
+    "Here the sight line spawn->subject is CLEAR: the SmallManor sits back at"
+    "its original (-50.35, 11.25), 34.6 m from the spawn and well off the"
+    "line. The difficulty is orientation, not occlusion — the drone spawns"
+    "with rotation 0.815438 rad, i.e. nav heading 43.3 deg, which puts"
+    "PERSON_B exactly 180 deg behind it, outside the 70.2 deg HFOV by a wide"
+    "margin. The agent must rotate to find her; nothing needs to be flown"
+    "around. Verified by scripts/verify_scene_geometry.py against these"
+    "very translations, not against this prose."
+    "Everything else (windmills, pines, road, forest, Tesla) is as in"
+    "bench_photo_hidden.wbt."
+  ]
+  title "ClawBench-UAV Photo Open Subject, Facing Away"
+  basicTimeStep 16
+  defaultDamping Damping {
+    linear 0.5
+    angular 0.5
+  }
+}
+Viewpoint {
+  orientation -0.03132509357312057 -0.004229724205027985 0.9995002991224087 2.901671340011777
+  position -17.364913488917383 1.2430003950683964 0.7513423909480075
+  near 0.2
+  follow "drone_agent"
+  followSmoothness 0.2
+}
+TexturedBackground {
+  luminosity 3
+}
+TexturedBackgroundLight {
+}
+Floor {
+  size 400 400
+  tileSize 6 6
+  appearance SandyGround {
+  }
+}
+Road {
+  translation -43.8 9.2 0.01
+  rotation 0 0 1 -0.3926996938995747
+  width 3
+  numberOfLanes 1
+  rightBorder FALSE
+  leftBorder FALSE
+  wayPoints [
+    0 0 0
+    100 0 0
+    200 200 0
+  ]
+  splineSubdivision 8
+  appearance Pavement {
+    type "black stone"
+  }
+}
+DEF WINDMILL_0 Windmill {
+  translation -43.8656 -19.8433 0
+  rotation -7.19228e-09 2.6842e-08 1 0.523601
+}
+DEF WINDMILL_1 Windmill {
+  translation -44.258 -27.3356 0
+  rotation -7.19228e-09 2.6842e-08 1 0.523601
+  name "windmill(1)"
+}
+DEF WINDMILL_2 Windmill {
+  translation -46.2448 30.573 0
+  rotation -7.19228e-09 2.6842e-08 1 0.523601
+  name "windmill(2)"
+}
+DEF WINDMILL_3 Windmill {
+  translation -38.75 23.4 0
+  name "windmill(3)"
+}
+# Scenario B: the manor is back at its ORIGINAL (-50.35, 11.25) — the position
+# it occupied before bench_photo_hidden.wbt moved it onto the sight line. It is
+# 34.6 m from the spawn and clear of the spawn->subject segment, so nothing
+# occludes the subject here.
+DEF MANOR SmallManor {
+  translation -50.35 11.25 0
+  rotation 0 0 -1 0.392394
+}
+SquareManhole {
+  translation -20.75695 2.170845 -0.03
+}
+DEF BOX CardboardBox {
+  translation -21.487107 0.941935 0.3
+  rotation 0 0 1 -1.8325953071795862
+}
+# Tesla moved BEHIND PERSON_B, reproducing the car-model relative pose of
+# bench_photo_carmodel.wbt exactly: in the person's body frame the car origin
+# (rear axle) sits 2.881 m behind and 0.189 m to her right, with car yaw =
+# person yaw - 2.0944 rad, i.e. she stands at the car's left-front wheel and
+# the body extends forward past her side. Applied to PERSON_B at
+# (-42.2944, -8.5472) yaw 2.0 -> car at (-44.8352, -9.9176) yaw -0.0944.
+#
+# Both bodies then translated 1 m toward the person's right-front, along the
+# unit vector (0.93723, -0.34871) derived from her yaw 2.0 (mesh convention
+# 1.5708 = +x, so she faces 24.591 deg). The SAME vector is applied to both, so
+# the relative pose above is preserved exactly -- centre distance stays
+# 2.886808 m and yaw is unchanged, which is what keeps her standing at the
+# car's left-front wheel.
+DEF TESLA TeslaModel3Simple {
+  translation -40.5688 -17.5407 0.31
+  rotation 0 0 1 -0.0944
+}
+# --- Photography subject (single static 3D human, HIDDEN placement) ---------
+# PERSON_B stands on the extension of the spawn->manor-centre line, 11.5 m
+# past the manor centre: spawn (-20.76, 2.17) -> manor (-32, -3.4) -> person
+# (-42.29, -8.55). 24 m from the spawn, ~5.8 m clear of the manor's west wall,
+# 11.4 m from WINDMILL_0 — invisible from the spawn at any
+# altitude below ~12 m, discoverable by climbing near the building or by
+# rounding either side. She faces ENE (yaw 2.0: mesh convention 1.5708 = +x),
+# i.e. toward the approach, so a drone arriving around/over the manor sees
+# her front. Mesh/material notes as in bench_photo.wbt.
+#
+# Then translated 1 m toward her own right-front -- the bisector of her facing
+# (0.90930, 0.41614) and her right (0.41614, -0.90930), i.e. the unit vector
+# (0.93723, -0.34871). New position (-41.3572, -8.8959): 23.39 m from the
+# spawn, still 2.91 m clear of the manor half-extent, and still fully occluded
+# from the spawn at low altitude. TESLA is translated by the same vector, so
+# the two keep their exact relative pose.
+DEF PERSON_B Solid {
+  translation  -38.0280 -16.1703 0.95
+  rotation 0 0 1 2.0
+  children [
+    Pose {
+      rotation 1 0 0 1.5708
+      children [
+        Shape {
+          castShadows FALSE
+          geometry Mesh {
+            url [
+              "../assets_created/Meshy_Elven_Warrior/Meshy_AI_Elven_Warrior_in_Gree_0708065940_texture.obj"
+            ]
+          }
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../assets_created/Meshy_Elven_Warrior/Meshy_AI_Elven_Warrior_in_Gree_0708065940_texture.png"
+              ]
+            }
+            roughness 1
+            metalness 0
+          }
+        }
+      ]
+    }
+  ]
+  name "person_b"
+}
+Pine {
+  translation -14.0083 -14.4828 0
+  rotation 0 0 1 2.61799
+}
+Pine {
+  translation -19.6195 -24.3783 0
+  rotation 0 0 1 2.87979
+  name "pine tree(1)"
+}
+Pine {
+  translation -22.0129 6.20205 0
+  name "pine tree(3)"
+}
+Pine {
+  translation -10.6926 -25.1339 0
+  name "pine tree(4)"
+}
+Pine {
+  translation -14.3441 14.5621 0
+  name "pine tree(5)"
+}
+Pine {
+  translation -26.6328 -7.1707 0
+  name "pine tree(6)"
+}
+Pine {
+  translation -9.37029 14.0209 0
+  rotation 0 0 1 -2.6179953071795863
+  name "pine tree(2)"
+}
+Forest {
+  translation 0 0 -0.01
+  shape [
+    200 200
+    200 0
+    50 0
+    50 50
+    -50 50
+    -50 -50
+    50 -50
+    50 0
+    200 0
+    200 -200
+    -200 -200
+    -200 200
+  ]
+  density 0.005
+  type "cherry tree"
+  randomSeed 1
+  maxHeight 12
+  minHeight 6
+  maxRadius 6
+  minRadius 3
+}
+DEF BENCH_SUPERVISOR Robot {
+  translation 0 0 0
+  name "benchmark_supervisor"
+  model "ClawBench Supervisor"
+  description "Ground-truth recorder for the ClawBench-UAV benchmark: trajectory sampling, contact events, object poses, simulation reset."
+  locked TRUE
+  controller "truth_recorder"
+  supervisor TRUE
+}
+# Scenario B: spawn yaw 0.815438 rad = nav heading 43.3 deg. The subject bears
+# 223.3 deg (nav) from the spawn, so she is 180.0 deg off-axis — as far outside
+# the 70.2 deg HFOV as geometry allows. Directly behind, not merely to one side.
+DEF DRONE Mavic2Pro {
+  translation -20.75695 2.170845 0.1
+  rotation 0 0 1 0.815437876371822
+  name "drone_agent"
+  controller "rgb_agent"
+  controllerArgs [
+    ""
+  ]
+  cameraSlot [
+    Camera {
+      width 960
+      height 720
+      fieldOfView 1.2252
+      near 0.2
+    }
+  ]
+  bodySlot [
+    Pose {
+      translation 0 0 0.12
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0.9 1
+            roughness 0.25
+            metalness 0
+          }
+          geometry Sphere {
+            radius 0.11
+          }
+        }
+      ]
+    }
+  ]
+}

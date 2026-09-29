@@ -1,0 +1,550 @@
+{
+  "webots_version": "R2025a",
+  "files": {
+    "webots/worlds/bench_photo_hidden.wbt": "69379bc5d958f294ef6ebbf706109e45fb8251d3ecf0e54ce9c6e6777026513a",
+    "webots/worlds/bench_photo_facing.wbt": "c02525ea8abdf9e6acc580a5c687206af73d3b5ba001a7327781ea59192396c5",
+    "webots/worlds/bench_photo_open.wbt": "c101828b5fc543a6e6e71ba63907c20106a1364d83e19059aed2c3adb9ce0ba9",
+    "webots/assets_created/Meshy_Elven_Warrior/Meshy_AI_Elven_Warrior_in_Gree_0708065940_texture.obj": "49d0c73de70a4d64d027b8adaa6be670048a310cf803408dc826c9e1dbe68493",
+    "webots/assets_created/Meshy_Elven_Warrior/Meshy_AI_Elven_Warrior_in_Gree_0708065940_texture.png": "56f18bbd39b71b4b6b065fd7273ab54283bd69e4444e5c1a7198bba9085dc625",
+    "webots/controllers/rgb_agent/rgb_agent.py": "15ff9720362537b8bc24e9f72d51c38ab42202ab6fd5567b387cce1b555126f2",
+    "webots/controllers/rgb_agent/runtime.ini": "c05296122c2af008139e59e344878fcb2960f7c17325b0cab7eb4f409e6c9680",
+    "webots/controllers/truth_recorder/truth_recorder.py": "37c55bc2b86fe4689a954119c273021e9066ec29c13c5c4421c0eaaa52713568",
+    "webots/controllers/truth_recorder/runtime.ini": "c05296122c2af008139e59e344878fcb2960f7c17325b0cab7eb4f409e6c9680",
+    "webots/worlds/bench_photo_terrace.wbt": "7d7643146c4553dc2b3be733a29743d24ff313aa383cbd4551540bb7bff9904d",
+    "webots/protos/PhotographyTerrace.proto": "a720fa70e90b62877b349257fdadf238c97c12b14246044bad253525679b21f0",
+    "webots/protos/TerraceSubject.proto": "8de30f151ffbb7e5fbfe6ae2dce126eb1fd34de8b83a37b4c6c07da4f0aaed12",
+    "webots/assets_created/terrace/README.md": "5e2d6de0fe068bfb6eb62c6a3771553bf97c79d9cf216c925ab290e7eec8bf51",
+    "webots/assets_created/terrace/ocean_color.png": "31d4cbd6248170dc46a3aeb55d481e02842593fd5090e168c70147dd9f355882",
+    "webots/assets_created/terrace/ocean_normal.png": "6f9aa02003c0febe68c170ed72ae63aa29ad06508fb4e61877900250255d2618",
+    "webots/assets_created/terrace/ocean_roughness.png": "baea2ec36ecc9170358dcee12f991d519316476d6323d35bd6d109d7bf068c94",
+    "webots/assets_created/terrace/olive_leaves_0.obj": "a65ce61d04b64e5850b8853fd1b836fa9b6548192d3ae89ebea2b22a46f7d860",
+    "webots/assets_created/terrace/olive_leaves_1.obj": "4b141b73affa5188ccc774519f9be319391450a08e367ece946910fb2242c14b",
+    "webots/assets_created/terrace/olive_leaves_2.obj": "816cd51ee0f4248babb6d56f77238e92cc72434f6e656ad76585fb128ff30269",
+    "webots/assets_created/terrace/sky_back.hdr": "376f385e755fe8e8bcec717dda09443ac36f335b72fdeeac160d268e4f6af570",
+    "webots/assets_created/terrace/sky_back.jpg": "296293bb4c095323c4271eebb54f70087b682a5545b7c59faa023ad469ddf507",
+    "webots/assets_created/terrace/sky_bottom.hdr": "68eb3f207548f9746c934a209d21fed2c7785a45fecf52ac8a65448872f7b1c1",
+    "webots/assets_created/terrace/sky_bottom.jpg": "8e911adc2d4b0a56e934e86de9d312289943aa69325aa076a0da9d365fe5d2e8",
+    "webots/assets_created/terrace/sky_front.hdr": "cf0feac15f2a8021d20ccc1f8d2f052bc5869d9994e1052e3904decf4169302c",
+    "webots/assets_created/terrace/sky_front.jpg": "2a3574bb00b508f90cbcfe4f149261592d16e3c077b822d225430b865e6aeb80",
+    "webots/assets_created/terrace/sky_left.hdr": "afed2c65ae079cf53a3277aa241d075347d6c61e4e3195c330881bb041c5eeaa",
+    "webots/assets_created/terrace/sky_left.jpg": "1f97e3e191212a77ac310abf147bcc3fea88f43f4839f5414d80a5845a5cab38",
+    "webots/assets_created/terrace/sky_right.hdr": "bfedd4475309671f597164af6fef4f5c11f1d22c823b2e8c02796cf9384bdf4c",
+    "webots/assets_created/terrace/sky_right.jpg": "5156581f8ece77e151480f5f8c24eb96c2ee57865fe7d2bf847f9b9d2eb44e34",
+    "webots/assets_created/terrace/sky_top.hdr": "5d18dce293b27c52ab21da66ee17f4e2561434fe061a1b504c4fe16281a7be7e",
+    "webots/assets_created/terrace/sky_top.jpg": "ffa973e62a392f32606005ed47695afa1dadaa19b2d6ba940ba0ec8b9052fc71",
+    "webots/assets_created/terrace/sources.json": "9a518d116e1a4aa865e0595eda8f6f2d88ee290e29c57f36cc1d6eb36f1d7345",
+    "webots/assets_created/terrace/stone_diff.jpg": "6db84a6d87dc50508b9d134d6fbd2b7e876b8081a5f43a118a249ca18de73af5",
+    "webots/assets_created/terrace/stone_nor_gl.jpg": "fcda391b57a816d646ae15544688be53790478da5cd48dbe514b3c6901415e61",
+    "webots/assets_created/terrace/stone_rough.jpg": "c7f026a611b7859903c61ec7fd4574944157223e9e7796413dd6e2a66eaeac7a",
+    "webots/assets_created/terrace/stone_warm.jpg": "91a26722e7998a18facea4fd4456cbb956ff3d373f274795dd349d89dadaed38",
+    "webots/assets_created/terrace/subject.obj": "33e0edc427c2984d5127a0df137561c79704cff6149a755b0007ea82e1dc3101",
+    "webots/assets_created/terrace/sunny_sky_back.hdr": "83843d3389a71dbeb8f2c09b495070438011c7faaa92f1f0055c5cc63de08481",
+    "webots/assets_created/terrace/sunny_sky_back.jpg": "608ffd6bb4096110a4877ddf632167025f616321e75757286916b5068a89a5b4",
+    "webots/assets_created/terrace/sunny_sky_bottom.hdr": "e8a83853641777eba5e54d059d30f096dc854a84c451f3a51214cbe935f0d141",
+    "webots/assets_created/terrace/sunny_sky_bottom.jpg": "f69cc2e6fcb1b10e0cbaefc024a9b0febdb50bc7d7a6ed87ea6ada41c1430647",
+    "webots/assets_created/terrace/sunny_sky_front.hdr": "55df5b366dd8c1d30b8b0cfb35b587d5708448ee862a5e6a4a97b511f279208d",
+    "webots/assets_created/terrace/sunny_sky_front.jpg": "4f08d5cf3a053a922ccc0b02d8bbd9ef60907ab40232e765920f61958eb4bd1e",
+    "webots/assets_created/terrace/sunny_sky_left.hdr": "57b679ee925c9afe6e3832152755202d05e659e417bb7763ed06278e4a9f4ccf",
+    "webots/assets_created/terrace/sunny_sky_left.jpg": "38a8f0ae41d8c3acca22266136d2f9438a6be65302571322de1eb952c5654736",
+    "webots/assets_created/terrace/sunny_sky_right.hdr": "8457be157efcfcf270b2dde82c546357ebaa7934a77e1b305b5846fa99ed539a",
+    "webots/assets_created/terrace/sunny_sky_right.jpg": "985cf1d452657e1c8740d14c18d7bc404b5b1cec8816f34839f7af4bd4a5fe83",
+    "webots/assets_created/terrace/sunny_sky_top.hdr": "69b4b38093ad3d2d254897bd14247d4bd305f42e54510f4123c0c3e887696a36",
+    "webots/assets_created/terrace/sunny_sky_top.jpg": "d9f86414cac583c6c957adbf8e5ea279c8df26aaaf012773015d3ab7fc600db1",
+    "webots/assets_created/terrace/sunny_water_normal.png": "5aa6b786b9d31ea26ef2532bfc07f62e95652d621c8a861adecbd8de14b624d1",
+    "webots/assets_created/terrace/water_normal.png": "e49ac7340dc8451e12cce636303636a24a3ef1e8bd35ad8c5c18bf6c3eabdb26",
+    "webots/assets_created/terrace/weather.json": "19a63a0728bc832b8df98add879c9a1e9daf56de8b64bc42b1e9797d67bd0a0d",
+    "webots/assets_created/Ada_Wang/Meshy_AI_Crimson_Operative_0915131054_texture.glb": "f10e9e299e9b0760ffc00f77ea7ff98db3a7c55728c2cf29fe340cebbda38c29",
+    "webots/assets_created/Ada_Wang/webots/base_color.jpg": "d3e72220789568be536178acc3b3d5cd1be8dda1f584e53390115fc8e7318124",
+    "webots/assets_created/Ada_Wang/webots/base_color.png": "e1e245c3f9a4dd3629ba80e4659ca30c810aa4777f59029652f6a87a2230e2f4",
+    "webots/assets_created/Ada_Wang/webots/manifest.json": "78474ec5a235f2b92f4dcfa4f63f3bd32b57ac1450d2891220ab7357ad56e4c2",
+    "webots/assets_created/Ada_Wang/webots/metalness.png": "7846fa7280c2f05e57824c818d62087fc74565211492a2a201ebc865cf92c51c",
+    "webots/assets_created/Ada_Wang/webots/normal.png": "1fb2b80950debb6cb9873408c837c31e6164dce8ab073a254b1104aa53eecb43",
+    "webots/assets_created/Ada_Wang/webots/roughness.png": "28c277a53ddd9b89150f2317cf76d3e2c241380e0ec0464f9ffc7495407929d1",
+    "webots/assets_created/Ada_Wang/webots/subject_01.obj": "0fde7b3a059a9310a35f2e429e2bc3e5a0c0d16ea6d600726be7c0ea680e53fa",
+    "webots/assets_created/Ada_Wang/webots/subject_02.obj": "f2fbc53b67ccd3ce89be0a60cc52049e511c84c0670b3ab250cabbaa784d359c",
+    "webots/assets_created/Ada_Wang/webots/subject_03.obj": "eb5e9936f5098c390afa77d154ead4490c07692497b4ce0711c750f433ee6eea",
+    "webots/assets_created/Ada_Wang/webots/subject_04.obj": "b416d84a9bfa9469b639ff99ee0a401c02a25840ae63ab721738542154b4b2ec",
+    "webots/assets_created/Ada_Wang/webots/subject_05.obj": "5890d6ee595e8a293c50c29bf8d3ddfacfd363bba1af37211fb9e475dda5211f",
+    "webots/assets_created/Ada_Wang/webots/subject_06.obj": "01049577d05def32e7cf54fccb8cb98adcaedc5cec5a389a9f1fc3c1beb6c24d",
+    "webots/assets_created/Ada_Wang/webots/subject_07.obj": "1054697bfd6f4135d0823574295dd172b9799d06b241028f2f516519766c2471",
+    "webots/assets_created/Ada_Wang/webots/subject_08.obj": "f84455eb237fa580fcd1a5ac397a68053e8f34b0d00207ef9e69f2079b3ba8d4",
+    "webots/assets_created/Ada_Wang/webots/subject_09.obj": "0078fb27b0c05f28389b60a2d76c7a6c2bceb1c0b78c277b0d699915037bb929",
+    "webots/assets_created/Ada_Wang/webots/subject_10.obj": "01f6aa835846ac838350fe7a9f632f59138cbd3f526f080b5d26e0663af4e843",
+    "webots/assets_created/Ada_Wang/webots/subject_11.obj": "8abf80b78abf6afaeb0adfbc9c00f54f2b5e379843b8bbd093c8ad32734e1a8b",
+    "webots/assets_created/Ada_Wang/webots/subject_12.obj": "ed13f12bf86ee3d0513233aedf63a1ab8d7ab3ca4afc7713327f2f4a853aaf9f"
+  },
+  "remote_resources": [
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/Pavement.proto",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/SandyGround.proto",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/buildings/protos/SmallManor.proto",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/buildings/protos/Windmill.proto",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/factory/containers/protos/CardboardBox.proto",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/factory/manhole/protos/SquareManhole.proto",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/Floor.proto",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/road/protos/Road.proto",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/trees/protos/Forest.proto",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/trees/protos/Pine.proto",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/dji/mavic/protos/Mavic2Pro.proto",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/vehicles/protos/tesla/TeslaModel3Simple.proto"
+  ],
+  "cached_resource_hashes": {
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/vehicles/protos/tesla/TeslaModel3Simple.proto": {
+      "sha256": "6dd5f8fedb185e40030bfa33f48667e5148ccae43ff91d9adfa4231afa93b257",
+      "bytes": 7019
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/vehicles/protos/textures/plate.jpg": {
+      "sha256": "c26b6c45a56137239707b31f413ba3eafd2021b40fc7c50b0d5ef7c2f364038e",
+      "bytes": 68277
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/vehicles/protos/tesla/TeslaModel3Details.proto": {
+      "sha256": "d154ce4bb9d8a2dc30d6048835260f1ff471bd176e98ae6eb64885f38682cd07",
+      "bytes": 284209
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/vehicles/protos/tesla/textures/tesla_model3_details_occlusion.jpg": {
+      "sha256": "6813e823d2abf118f2660414306a274bd317e7b6fa8bbd922881376bd23937f0",
+      "bytes": 563017
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/vehicles/protos/tesla/textures/tesla_model3_details_normal.jpg": {
+      "sha256": "f33b6c5f8f733abc35568489a61fcce433738a8ce4b3989a4eb320e272a06513",
+      "bytes": 1646563
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/vehicles/protos/tesla/textures/tesla_model3_details_metallic.jpg": {
+      "sha256": "5b4a6077b15d297c11f1bb7353b7cf71d14556f1427367afe2766cd54e08d5c7",
+      "bytes": 83793
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/vehicles/protos/tesla/textures/tesla_model3_details_roughness.png": {
+      "sha256": "a4d13c3179a376c55c60c20df3bae991af18cabcf2f8e120ac8fde492b4f022f",
+      "bytes": 34853
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/vehicles/protos/tesla/textures/tesla_model3_details_base_color.jpg": {
+      "sha256": "3ffeca03cacf9c8125cc7f0d6f78b70fcef97141d4ba36335fc770e73d699445",
+      "bytes": 824987
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/vehicles/protos/tesla/TeslaModel3FrontLights.proto": {
+      "sha256": "2e2ad981abcaadbb8941571d361d0ce878b77fc46690524b5f2012f65baf4d17",
+      "bytes": 23439
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/vehicles/protos/tesla/textures/tesla_model3_glass_occlusion.jpg": {
+      "sha256": "b5cc993d6e347342603b114d813d03c609e6e211ea90e87b75165e48c3d824b1",
+      "bytes": 83240
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/vehicles/protos/tesla/textures/tesla_model3_glass_normal.jpg": {
+      "sha256": "32d0ccbca5133a8e48fa0d2bc7c91cc92dd570175e87af371d239d604b9f6457",
+      "bytes": 87021
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/vehicles/protos/tesla/TeslaModel3Windows.proto": {
+      "sha256": "784bf7d933529e60bbf776463d5126ef419cd5f8418ddbdf690909cacd491253",
+      "bytes": 56418
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/vehicles/protos/tesla/TeslaModel3Coachwork.proto": {
+      "sha256": "3ef3bf0d086cfeb470fa8e193e2140a36c9772aecbcfe3178db4020f727039bb",
+      "bytes": 584489
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/vehicles/protos/tesla/textures/tesla_model3_bodywork_occlusion.jpg": {
+      "sha256": "3eba09487f2f0af239bdc8c26e4b07e6e0653989766516364a3588904bd6bdcb",
+      "bytes": 468191
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/vehicles/protos/tesla/textures/tesla_model3_bodywork_metallic.jpg": {
+      "sha256": "f5649880c7fc8c2141cbdcf0e347e0f67bd1ade05f55d2d893114fef985fe41f",
+      "bytes": 128412
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/vehicles/protos/tesla/textures/tesla_model3_bodywork_normal.jpg": {
+      "sha256": "7af8d19974962d3608f677a85ea57b1f43773cbcbf77d7aa1b7ca839448fd460",
+      "bytes": 1036227
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/vehicles/protos/tesla/textures/tesla_model3_bodywork_roughness.jpg": {
+      "sha256": "71ed444afd52c63bddd727fb4545d046734f1055ff1c4406a6a960e81cba8310",
+      "bytes": 103172
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/vehicles/protos/tesla/textures/tesla_model3_bodywork_base_color.png": {
+      "sha256": "dbae27d1de04eebab95002dc5f79fd854809818b2adcd5526b8187f94252b15d",
+      "bytes": 58890
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/vehicles/protos/tesla/TeslaModel3Wheel.proto": {
+      "sha256": "4c184a87be5073415201dc8264204cee8022f43f396d912a9d667f55a1f7b16b",
+      "bytes": 108360
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/vehicles/protos/tesla/textures/tesla_model3_wheels_occlusion.jpg": {
+      "sha256": "58aea5788fdfd7549d0b58e5cc4edb861506d2917152aa3ac31865407e67ce05",
+      "bytes": 263200
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/vehicles/protos/tesla/textures/tesla_model3_wheels_normal.jpg": {
+      "sha256": "24e2b4430b1a603c328bd73007f6fd3bfc5f31d7673862b3d870d4f6c55c8e4b",
+      "bytes": 2240204
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/vehicles/protos/tesla/textures/tesla_model3_wheels_metallic.png": {
+      "sha256": "9ba165fca6bccdd717f0599e0bb5ae7d38b50294c508aca52b1b457f0411eb1d",
+      "bytes": 31543
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/vehicles/protos/tesla/textures/tesla_model3_wheels_roughness.jpg": {
+      "sha256": "140ee234a035a196b68c61a5029c729861cd4163007901b505125c07e7c57c25",
+      "bytes": 105573
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/vehicles/protos/tesla/textures/tesla_model3_wheels_base_color.png": {
+      "sha256": "e59deb1463b98169022a07ff66c33107812211d121902caee8b1f1c4a8d22120",
+      "bytes": 31292
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/dji/mavic/protos/Mavic2Pro.proto": {
+      "sha256": "36b9bbd35b8ccd0ae6b3099ccaa9207e6858311601ac7a1aa4e8042acb2e84dd",
+      "bytes": 22452
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/dji/mavic/protos/Mavic2Pro/meshes/helix_b_plates.obj": {
+      "sha256": "de7380cf7f2ea4e2e3dcb9e7fc887f05d11b855f2c5b77a821a3f615996e16fa",
+      "bytes": 93401
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/dji/mavic/protos/Mavic2Pro/meshes/helix_b_joint.obj": {
+      "sha256": "0b79caf2cef4a7c419716c0219090b633237e45ee0b8b57521ca3906f940b1c4",
+      "bytes": 119070
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/dji/mavic/protos/Mavic2Pro/meshes/helix_b.obj": {
+      "sha256": "e17e57f3c5d1f57a14f6024c7abb8b23a44a595dcea0dcb993e8094b9468bb42",
+      "bytes": 88931
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/default/protos/textures/fast_helix.png": {
+      "sha256": "b6e3f9e32dc165bd71f815e5585844071170391595beb36842faef7563eea49c",
+      "bytes": 114564
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/dji/mavic/protos/Mavic2Pro/meshes/front_led.obj": {
+      "sha256": "e46a47e33f72fa4edc4fc9f1df87791f41fb3c995a274a4fa739b88f525fd0c1",
+      "bytes": 18685
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/dji/mavic/protos/Mavic2Pro/meshes/camera_lens.obj": {
+      "sha256": "9ad8d2b7c3758f5a1e4e27369b0a047b33e6390ddb6d7ab6979d04e1b5417cc5",
+      "bytes": 3894
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/dji/mavic/protos/Mavic2Pro/meshes/camera_chassis.obj": {
+      "sha256": "5b5ab205bc56166e5582e0b8c8bafb6e963ca09b443df67fdda817e57f26891d",
+      "bytes": 450166
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/dji/mavic/protos/Mavic2Pro/meshes/camera_pitch.obj": {
+      "sha256": "2a6a40080dd738f108b67072157aaa800db5f87970da51049dee03047b279635",
+      "bytes": 204733
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/dji/mavic/protos/Mavic2Pro/meshes/camera_yaw.obj": {
+      "sha256": "9714fdf5ad653f41488c1444542eef32a3066eb9c88326e83b75ab44564d3ac4",
+      "bytes": 220503
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/dji/mavic/protos/Mavic2Pro/meshes/helix_a_plates.obj": {
+      "sha256": "db4fa69475ada9d190464830a3b1231448bc51818fb46c1faa94f23b35868992",
+      "bytes": 93278
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/dji/mavic/protos/Mavic2Pro/meshes/helix_a_joint.obj": {
+      "sha256": "5aa4823f9cf2ef24dcfaea8b5e74ab7511f37b4ced3fee35b77d2d463b0a55c3",
+      "bytes": 119096
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/dji/mavic/protos/Mavic2Pro/meshes/helix_a.obj": {
+      "sha256": "f3b7032fde84893fdea028387ca4a1cd849315243454ec7a2fdc288334a06f44",
+      "bytes": 88950
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/dji/mavic/protos/Mavic2Pro/meshes/body_lenses.obj": {
+      "sha256": "43237635414b28bf03746685ba66304e54b88cffd0766104d95c7b26201e67f0",
+      "bytes": 2787
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/dji/mavic/protos/Mavic2Pro/meshes/body_metal_parts.obj": {
+      "sha256": "6b7a7aaffe8ac084294e1252cffd40f98b1dac62ceea7d12a8eb4613920f9656",
+      "bytes": 375259
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/dji/mavic/protos/Mavic2Pro/meshes/body.obj": {
+      "sha256": "71a7795e8618bf16ab0d3511aba51e1b0c329342efaf5a566d17241df4707a63",
+      "bytes": 1902241
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/MattePaint.proto": {
+      "sha256": "65911291cb96c9dfd9e43cd216fd4622fc077333c980f1a742c55859f4b51000",
+      "bytes": 1178
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/matte_car_paint/matte_car_paint_roughness.jpg": {
+      "sha256": "0369c04c58d217621de852dad09c5d6e0c0fc2e99797853e28632811eb4cf759",
+      "bytes": 405812
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/matte_car_paint/matte_car_paint_base_color.jpg": {
+      "sha256": "c2364d95b565f27664f09cd06878497e86d8a5a147c43ca1636fbf3a81f2c305",
+      "bytes": 917859
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/GlossyPaint.proto": {
+      "sha256": "ffe28363cb674d9d3d10861e8df9304e78c25154b146a5902c46b7b7b7aa7b38",
+      "bytes": 1320
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/glossy_car_paint/glossy_car_paint_normal.jpg": {
+      "sha256": "08034a3cd5a03e5532c2731ad2ccec87e30510a693156060471e6416f90d2f90",
+      "bytes": 82612
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/glossy_car_paint/glossy_car_paint_roughness.jpg": {
+      "sha256": "4a4eac37b077adf22ce3eebde87911c419bee99df20dbf668d465df35943b5a3",
+      "bytes": 1253127
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/trees/protos/Pine.proto": {
+      "sha256": "c67f40db932ab8b83515c5b158157090b8dace785cee3d0d52af493d1a10795f",
+      "bytes": 95994
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/trees/protos/textures/pine_trunk.jpg": {
+      "sha256": "b36d63d06cfaa775df2d84f5d20de885d369c1383773440695a15951ba314f4d",
+      "bytes": 257575
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/trees/protos/textures/pine_leaves_normal.jpg": {
+      "sha256": "0db40dedc6c26200e60654f7060eec30c7e6ac8e319a27547c1d31302e6b14f5",
+      "bytes": 99586
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/trees/protos/textures/pine_leaves.png": {
+      "sha256": "fed4ffb99655ccb6e6c64638895918d2888535161d0758e4e3839c237145762c",
+      "bytes": 252446
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/trees/protos/Forest.proto": {
+      "sha256": "7556f8289a875e631c6e3a376c5abe80c5af5d90f94e41fd1dfbc4ecdd4b6c44",
+      "bytes": 11872
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/trees/protos/textures/trees.png": {
+      "sha256": "559e51a71048d11cab52d34351f9c273e7439111994dc074cf3398f301edc0f3",
+      "bytes": 2831481
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/trees/protos/textures/dry_leaf.jpg": {
+      "sha256": "4e63b5606c529661a743995eadb480f1fbacdc6e6265f87444eb977059ea1456",
+      "bytes": 1062065
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/road/protos/Road.proto": {
+      "sha256": "d19f022854c5ef06ae0ef56ab623e4fc37a73dbf89746aac51d1f0cd2e0172fc",
+      "bytes": 49293
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/road/protos/CrashBarrier.proto": {
+      "sha256": "07c923c25ae6c767b15d003bc07fa15c311d3332133786a71d1aedda37256851",
+      "bytes": 5016
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/geometries/protos/Extrusion.proto": {
+      "sha256": "cc75934984885e7d3d732215e91ebe31d651a0fbf141466b6e80554d5be19389",
+      "bytes": 13301
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/street_furniture/protos/Fence.proto": {
+      "sha256": "975867a3db9e5c191f162671e15883fe1a670e061d5535e8dddb78a623a8262c",
+      "bytes": 14628
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/Pavement.proto": {
+      "sha256": "04db80c9e9c62bca5b9cd3d42e02688cfde4966e3979998511a4091d67bd700d",
+      "bytes": 1901
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/Asphalt.proto": {
+      "sha256": "6259db827b95cd83090f3fc31a9348998febdc84a09ed956f87f1fdd207b5bbc",
+      "bytes": 1404
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/road/protos/RoadLine.proto": {
+      "sha256": "bb1503278e1a717775cb919d697aaa36d2bc554ca53310ef1ba58a2dc8f37f17",
+      "bytes": 896
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/floors/protos/Floor.proto": {
+      "sha256": "bd4cfb4a12ee412ad91326bfd55e9dd5048bec063c02cd2ade9b0df01f471800",
+      "bytes": 2985
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/Parquetry.proto": {
+      "sha256": "0a7d8f9a7e99908bc32c439f40204887d1aecd27a6c897d723df7b1e048c6785",
+      "bytes": 1916
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/factory/manhole/protos/SquareManhole.proto": {
+      "sha256": "d9e57a4865d831498b491c729b026224fde59db8d3298ced57ffb47c46aad219",
+      "bytes": 1965
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/factory/manhole/protos/textures/manhole_occlusion.jpg": {
+      "sha256": "279b008f37ccece55a8ee89d80379843cb26ce3ccec667b4a1eedc71788d35b7",
+      "bytes": 128003
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/factory/manhole/protos/textures/manhole_normal.jpg": {
+      "sha256": "4a6aa546f85e969660b61e6e07988e31cf261485ba0474850a96c3814649c290",
+      "bytes": 228928
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/factory/manhole/protos/textures/manhole_metalness.jpg": {
+      "sha256": "7c11ce103a30fab8f8e193d50ff64a226582219a67ce9865a31e206fdb24f0b3",
+      "bytes": 162272
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/factory/manhole/protos/textures/manhole_roughness.jpg": {
+      "sha256": "da9e4db45bfcf35aeb1299eaf232c645b1366fe94f43bc90780008a16298b9a7",
+      "bytes": 143153
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/factory/manhole/protos/textures/manhole_base_color.jpg": {
+      "sha256": "7d33a96cf98af64b0bc75df48c22c27847d6a87fb6404ae3a173585fbde60272",
+      "bytes": 96605
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/factory/containers/protos/CardboardBox.proto": {
+      "sha256": "60d87a225b51fa1646f9ea612914f61b785d3cc4ab548bc3fa1446b1276750bd",
+      "bytes": 8148
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/Cardboard.proto": {
+      "sha256": "64eafe6633a671da6cabc098880d2d129ba001e8932c7fb1d15412ba7551d673",
+      "bytes": 1625
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/buildings/protos/Windmill.proto": {
+      "sha256": "595b324ab9fc9c2834c41aee2f311e7aa795f8e45f0762f02ec536eb608e3308",
+      "bytes": 109997
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/buildings/protos/textures/windmill_occlusion.jpg": {
+      "sha256": "fe96a19e582bab32297e56a752536bfc0817f42040f2e0de5a9247cd16b78b40",
+      "bytes": 357060
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/buildings/protos/textures/windmill_normal.jpg": {
+      "sha256": "2b65a8c3df5514c6094534c1ea189d3b5f92436509d3fe818e06c5f2e8f29473",
+      "bytes": 1291687
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/buildings/protos/textures/windmill_metalness.jpg": {
+      "sha256": "2bf1c85bc9a191f6a88247270b5cc22279774781f9868b01fd0d300ed9bd9ca3",
+      "bytes": 371578
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/buildings/protos/textures/windmill_roughness.jpg": {
+      "sha256": "7db77531d86e19a3e8e13be17f5949ebd99cdffb6d5787b38c2637c9a43e1617",
+      "bytes": 709237
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/buildings/protos/textures/windmill_base_color.jpg": {
+      "sha256": "ddcf836a7752171b35781716ebb279291f82f614de216550f217ae292411c1f0",
+      "bytes": 1172178
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/buildings/protos/SmallManor.proto": {
+      "sha256": "32db3ec9a152f89f746c8287f80dba95450a5cdb8b1f0d405e497d4ce6861f44",
+      "bytes": 272020
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/buildings/protos/textures/small_manor_windows_occlusion.jpg": {
+      "sha256": "a58e7487874281999a19926b8b04a6650e5336ecf9b954761c8330a23b0382e2",
+      "bytes": 262479
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/buildings/protos/textures/small_manor_windows_normal.jpg": {
+      "sha256": "24bc5c15b848091661c8bdbec3f817b20f604d5b1ed42ea1d8289e2a9a8df9f1",
+      "bytes": 654376
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/buildings/protos/textures/small_manor_windows_metalness.jpg": {
+      "sha256": "051c94fb83951428627a75a5fb97c6378170c59cf336391ad339bec8377ee0be",
+      "bytes": 491850
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/buildings/protos/textures/small_manor_windows_roughness.jpg": {
+      "sha256": "66b9e9049fd4937514169b51746ca3f5a37de6bd2cab8cfff0a75641c5f0321c",
+      "bytes": 408468
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/buildings/protos/textures/small_manor_windows_base_color.jpg": {
+      "sha256": "ba8954d7a154f0819c46a76c510879a9de55cd608ef62bcd6ab933c0e63088ce",
+      "bytes": 750072
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/buildings/protos/textures/small_manor_frame_occlusion.jpg": {
+      "sha256": "d53dd9bb2b2f82511497dad6792d81dfa560c55b4fa9dfd9438fcae67101f110",
+      "bytes": 298440
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/buildings/protos/textures/small_manor_frame_normal.jpg": {
+      "sha256": "aa7174444cccd28162155a9478daa72be7d63bbf5bd9897f4fc2fbd2f963e798",
+      "bytes": 1635206
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/buildings/protos/textures/small_manor_frame_metalness.jpg": {
+      "sha256": "712689ad0594e86981ffdd0b578af7744c3813a8719c2e34057c78ed834df813",
+      "bytes": 141324
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/buildings/protos/textures/small_manor_frame_roughness.jpg": {
+      "sha256": "ed078b2158720876c2c725b1b7b3613b47528a65bda5bd210ce0db5f3ea1d024",
+      "bytes": 306278
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/buildings/protos/textures/small_manor_frame_base_color.jpg": {
+      "sha256": "24a972952cf79ab7d4205fefd8c3b4a0df00372cda25bbbd5c72b9f1a2601f03",
+      "bytes": 1054969
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/buildings/protos/textures/small_manor_walls_occlusion.jpg": {
+      "sha256": "35269a037cbc9f353a21935fff06cd7a3daca7e9cbb753c3f4a90661a0869247",
+      "bytes": 261371
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/buildings/protos/textures/small_manor_walls_normal.jpg": {
+      "sha256": "22118cc5203f3bc5d170c49541fbea4f0e802df4a53cba5fb161a0a2253c5e9b",
+      "bytes": 3141630
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/buildings/protos/textures/small_manor_walls_metalness.jpg": {
+      "sha256": "057dffeb660639557a2cbe0d147e3a1611ae9da7327899cf5b8c5563d86df020",
+      "bytes": 149344
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/buildings/protos/textures/small_manor_walls_roughness.jpg": {
+      "sha256": "19b2dd659e8cacaa2c62f3f64b400ad4e63403c6c809fbeca4cb7608d4e2fd5a",
+      "bytes": 410024
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/buildings/protos/textures/small_manor_walls_base_color.jpg": {
+      "sha256": "ba4fd42ced0bf7b7f26eab3bbbc37f95a9dbb70b1b468ae573d2eac5ee89cae2",
+      "bytes": 1013808
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/buildings/protos/textures/small_manor_roof_occlusion.jpg": {
+      "sha256": "9b2a72d1ee94086d0a4949d02de3283aa96e940706f0c6996f44a6b954ce75ea",
+      "bytes": 304186
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/buildings/protos/textures/small_manor_roof_normal.jpg": {
+      "sha256": "6e3f8ba501542b192f761566f496bb1ae29d07f41599e296c85e4505036ce0c4",
+      "bytes": 2554961
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/buildings/protos/textures/small_manor_roof_metalness.jpg": {
+      "sha256": "e0013b909a1a39209dca67f5500dd683d881f74d14d488922fd0b5e05d5b2439",
+      "bytes": 173982
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/buildings/protos/textures/small_manor_roof_roughness.jpg": {
+      "sha256": "c004cc8e37277b52283da7d15e8d2242388eff0963d28dce628087a7a93e47f0",
+      "bytes": 473091
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/buildings/protos/textures/small_manor_roof_base_color.jpg": {
+      "sha256": "82188edd4b12f2f2ce31a95b2cae8a3c41e3895dfa2f144e32dab0cfa11e1d0f",
+      "bytes": 1105354
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto": {
+      "sha256": "103b96d670659ecb54974a76c731374e384cef0a4a053b9b090742f1dbb9041e",
+      "bytes": 4935
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto": {
+      "sha256": "8ea2ec89cbec31d1c62d11d7548271f072273ba89873800d5842d67140e97c64",
+      "bytes": 4286
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/SandyGround.proto": {
+      "sha256": "8636a21281e4ac255f4c02b6b0d8a11976f4fdbd2ee2f8ed8cab01d8197ddb33",
+      "bytes": 1507
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/sandy_ground/sandy_ground_occlusion.jpg": {
+      "sha256": "7019d8451122b224383cf4626c1757041aef4dad8dca47cfd28f0238a6f359cd",
+      "bytes": 256591
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/sandy_ground/sandy_ground_normal.jpg": {
+      "sha256": "6102172763ec479f8869a86d7e0f1b6f6b981b73f81c6f47c88b897004069b0d",
+      "bytes": 1318989
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/sandy_ground/sandy_ground_roughness.jpg": {
+      "sha256": "a1f3dcbb61bdfc02ab92e659659c6c1465ab5b06c2784c8e465008a3bce91925",
+      "bytes": 725121
+    },
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/sandy_ground/sandy_ground_base_color.jpg": {
+      "sha256": "a609b0cf54def123eec167cfcb98881b84877eb644334ee2b020ae559e4e5d40",
+      "bytes": 1040638
+    }
+  },
+  "unresolved_literal_references": [
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/trees/protos/textures/trees_with_snow.png",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/road/protos/textures/line_occlusion.jpg",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/road/protos/textures/line_normal.jpg",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/road/protos/textures/painted_arrows.png",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/road/protos/textures/line_base_color_dashed.png",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/road/protos/textures/line_base_color.png",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/road/protos/textures/road_crash_barrier_bar_roughness.jpg",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/road/protos/textures/road_crash_barrier_bar.jpg",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/_pavement_occlusion.jpg",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/_pavement_normal.jpg",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/_pavement_roughness.jpg",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/_pavement_base_color.jpg",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/asphalt/asphalt_occlusion.jpg",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/asphalt/asphalt_normal.jpg",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/asphalt/asphalt_roughness.jpg",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/asphalt/asphalt_base_color.jpg",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/default/worlds/textures/checkered_parquetry.jpg",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/_parquetry_occlusion.jpg",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/_parquetry_normal.jpg",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/_parquetry_roughness.jpg",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/_parquetry_base_color.jpg",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/_occlusion.jpg",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/_normal.jpg",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/_roughness.jpg",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/_base_color.jpg",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/_top.hdr",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/_right.hdr",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/_left.hdr",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/_front.hdr",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/_bottom.hdr",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/_back.hdr",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/_top.jpg",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/_right.jpg",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/_left.jpg",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/_front.jpg",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/_bottom.jpg",
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/backgrounds/protos/_back.jpg"
+  ],
+  "resource_scope": "Literal PROTO references; dynamic template resource paths are resolved by Webots R2025a."
+}

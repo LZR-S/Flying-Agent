@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0e1117">
+  <title>Flight / v1 摄影观测台</title>
+  <link rel="stylesheet" href="/assets/dashboard.css">
+  <script type="module" src="/assets/dashboard.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Flight 观测台首页"><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M4 5h10v10H4zM22 5h10v10H22zM4 23h10v10H4zM22 23h10v10H22zM9 10l18 18M27 10L9 28"/></svg><span>FLIGHT<span class="brand-divider">/</span><span class="brand-sub">摄影观测台</span></span></a>
+    <div class="topbar-right"><span class="local-control">WEBOTS / V1</span><span class="connection" id="connection"><i></i><span id="connection-text">连接中</span></span><time id="wall-clock">--:--:--</time><button id="language-toggle" class="language-toggle" type="button" aria-label="Switch to Chinese">中文</button></div>
+  </header>
+
+  <main>
+    <section class="control-panel panel" aria-labelledby="control-heading">
+      <div class="control-heading"><div class="control-title"><span class="control-indicator"></span><h2 id="control-heading">Webots 任务控制</h2><span class="caption">V1 / RGB AGENT</span></div><div class="control-status" role="status"><span id="control-state" class="status-tag">读取状态</span><span id="control-message">正在连接控制服务…</span></div></div>
+      <form id="mission-form" class="command-form">
+        <div class="command-input"><label class="brief-label" for="control-brief">摄影指令 <span>描述主体、范围与构图</span></label><textarea id="control-brief" rows="2" maxlength="2000" required>找到人物，拍一张2:3竖幅半身照，从头顶到大腿，保留头发、手和手持物</textarea>
+          <div class="mission-settings"><label>场景<select id="control-scene"><option value="terrace">Terrace · 露台</option><option value="facing">Facing · 正面</option><option value="open">Open · 开阔</option><option value="hidden">Hidden · 隐藏</option></select></label><label>模型接口<select id="control-provider"></select></label><label>模型<input id="control-model" value="gemini-3.6-flash" maxlength="100" required></label><label>预算（秒）<input id="control-duration" type="number" min="30" max="1800" value="900" required></label></div>
+          <label class="history-option"><input id="control-history" type="checkbox" checked> 导航图像历史 <span>当前图像 + 最近导航帧，支持按需回看</span></label>
+          <label class="history-option"><input id="control-reference" type="checkbox" checked> 参考图工具 <span>允许模型按需生成一次；合成图仅供构图参考</span></label>
+        </div>
+        <div class="command-actions"><div class="flight-actions"><button id="control-start" class="control-button start-button" type="submit" disabled>启动 Webots · 开始任务</button><button id="control-stop" class="control-button stop-button" type="button" disabled>停止并降落</button></div><p id="control-hint" class="control-hint">启动后模型可自主起飞。停止请求进入运行层收尾；历史回放不会触发飞行。</p><span id="provider-endpoint" class="mono endpoint"></span></div>
+      </form>
+      <div class="control-footer"><span id="control-target">当前控制任务：无</span><button id="control-view-run" type="button" hidden>查看当前任务 ↗</button></div>
+      <div id="control-error" class="control-error" role="alert" hidden></div>
+    </section>
+
+    <section class="mission-header" aria-label="任务概览">
+      <div class="mission-heading"><div class="eyebrow">AUTONOMOUS PHOTOGRAPHY <span>/</span> MISSION OBSERVATORY</div><h1 id="mission-brief">等待摄影任务</h1><div class="mission-meta"><span id="run-status" class="status-tag">待连接</span><span id="run-backend">—</span><span class="meta-dot">·</span><span id="run-model">模型 —</span></div></div>
+      <div class="run-control"><label for="run-select">运行记录 <span>SESSION</span></label><select id="run-select" aria-label="选择运行记录"><option value="">正在读取记录…</option></select><div class="session-links"><span id="run-updated">—</span><a id="trace-download" class="disabled" aria-disabled="true">下载 Trace <span aria-hidden="true">↗</span></a></div></div>
+    </section>
+
+    <div id="notice" class="notice" role="status" hidden></div>
+
+    <section class="phase-bar runtime-bar" aria-label="运行状态">
+      <div class="phase-caption"><span class="eyebrow">AGENT LOOP</span><strong id="current-phase">等待开始</strong></div>
+      <div class="runtime-description" id="runtime-description">观察、决策、动作与复核由同一个循环执行</div>
+      <div class="mission-elapsed"><span class="eyebrow">ELAPSED</span><strong id="elapsed">00:00</strong></div>
+    </section>
+
+    <div class="workspace">
+      <section class="vision-panel panel" aria-labelledby="vision-heading">
+        <div class="panel-heading"><div><span class="section-number">01</span><h2 id="vision-heading">无人机视角</h2><span class="caption">CAMERA FEED</span></div><div class="view-switch" role="group" aria-label="画面模式"><button type="button" data-view="viewfinder" class="active" aria-pressed="true">取景器</button><button type="button" data-view="raw" aria-pressed="false">完整 RGB</button><button type="button" data-view="photo" aria-pressed="false">成片预览</button><button type="button" data-view="evidence" aria-pressed="false">决策依据</button></div></div>
+        <div id="frame-stage" class="frame-stage">
+          <img id="camera-image" alt="无人机当前视角" hidden>
+          <div id="frame-empty" class="frame-empty"><svg viewBox="0 0 80 64" aria-hidden="true"><path d="M18 8H5v13M62 8h13v13M5 43v13h13M75 43v13H62M30 32h20M40 22v20"/></svg><strong id="frame-empty-title">等待图像输入</strong><span id="frame-empty-detail">任务开始后，画面将在这里显示</span></div>
+          <div class="frame-top"><span id="feed-status" class="feed-badge">NO SIGNAL</span><span id="frame-sequence">FRAME —</span></div>
+          <div class="frame-bottom"><span id="frame-caption">预览与模型观察分别记录</span><div class="frame-tools"><span id="guide-label">模型辅助线：关</span><button id="fullscreen" type="button" class="icon-button" title="全屏画面" aria-label="全屏画面"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 3H3v4m10-4h4v4M3 13v4h4m10-4v4h-4"/></svg></button></div></div>
+        </div>
+        <div class="playback"><div class="playback-buttons"><button id="previous-frame" class="icon-button" title="上一帧" aria-label="上一帧" disabled>‹</button><button id="play-pause" class="icon-button play-button" title="播放历史帧" aria-label="播放历史帧" disabled>▷</button><button id="next-frame" class="icon-button" title="下一帧" aria-label="下一帧" disabled>›</button></div><input id="frame-slider" type="range" min="0" max="0" value="0" aria-label="历史画面时间轴" disabled><span id="playback-time">— / —</span><button id="return-live" class="text-button" type="button" disabled>最新画面</button></div>
+        <div class="telemetry" aria-label="遥测状态"><div><span class="metric-label">电池 <small>BATTERY</small></span><strong id="battery">—<small>%</small></strong><div class="battery-track"><i id="battery-level"></i></div></div><div><span class="metric-label">飞行状态 <small>FLIGHT</small></span><strong id="flight-state" class="link-value">—</strong></div><div><span class="metric-label">图像年龄 <small>FRAME AGE</small></span><strong id="frame-age">—</strong></div><div><span class="metric-label">飞行链路 <small>LINK</small></span><strong id="flight-link" class="link-value">未知</strong><span class="metric-note" id="telemetry-note">无遥测数据</span></div></div>
+        <div class="perception-footer"><span><i class="mini-cross"></i><span id="perception-status">公共 RGB 与飞行状态</span></span><span id="source-age">SOURCE —</span></div>
+      </section>
+
+      <section class="activity-panel panel" aria-labelledby="activity-heading">
+        <div class="panel-heading"><div><span class="section-number">02</span><h2 id="activity-heading">决策与行动</h2><span class="caption">AGENT TRACE</span></div><span id="event-count" class="count">0</span></div>
+        <div id="pending" class="pending" hidden aria-live="polite"><span class="pending-pulse"></span><div><strong id="pending-title"></strong><span id="pending-detail"></span></div><span id="pending-time" class="mono"></span></div>
+        <div class="activity-controls"><div class="filters" role="group" aria-label="事件类型筛选"><button class="active" data-filter="key" aria-pressed="true" title="显示决策、动作和关键事件，隐藏常规观测">关键</button><button data-filter="decisions" aria-pressed="false">决策</button><button data-filter="actions" aria-pressed="false">动作</button><button data-filter="errors" aria-pressed="false">异常<span id="error-count" hidden></span></button><button data-filter="all" aria-pressed="false" title="包含所有观测记录">全部</button></div><button id="follow" class="follow active" aria-pressed="true" title="自动滚动到最新事件">跟随 ↓</button></div>
+        <div class="trace-search"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="6.5" cy="6.5" r="4"/><path d="m10 10 4 4"/></svg><input id="event-search" type="search" placeholder="搜索说明、工具或事件…" aria-label="搜索事件"></div>
+        <div id="timeline" class="timeline" tabindex="0" aria-label="任务事件时间轴"><div id="timeline-empty" class="timeline-empty"><span class="empty-lines" aria-hidden="true"></span><strong>任务轨迹将在这里展开</strong><p>逐步查看操作说明、动作结果与关键事件</p></div></div>
+        <div class="trace-footer"><span id="trace-detail">0 DECISIONS · 0 ACTIONS</span><span id="trace-poll">等待数据</span></div>
+      </section>
+    </div>
+
+    <section class="metrics-panel panel" aria-label="运行统计与报告"><div class="panel-heading"><div><span class="section-number">03</span><h2>运行统计</h2><span class="caption">EXECUTION EVIDENCE</span></div><div id="report-links" class="report-links"></div></div><div id="run-metrics" class="run-metrics"></div><div id="evaluation-note" class="evaluation-note">独立评测尚未生成</div></section>
+
+    <section class="candidates-panel panel" aria-labelledby="candidates-heading"><div class="panel-heading"><div><span class="section-number">04</span><h2 id="candidates-heading">候选照片</h2><span class="caption">CONTACT SHEET</span><span id="shot-count" class="count">0</span></div><a id="summary-download" class="text-link disabled" aria-disabled="true">下载结果 <span aria-hidden="true">↗</span></a></div><div id="candidates" class="candidates"><div class="candidates-empty"><span class="shot-outline" aria-hidden="true"></span><div><strong>等待第一张照片</strong><p>拍摄结果、构图评估与最终选片将在这里呈现</p></div></div></div><div id="selection-note" class="selection-note" hidden></div></section>
+    <section class="candidates-panel panel" aria-labelledby="references-heading"><div class="panel-heading"><div><span class="section-number">05</span><h2 id="references-heading">合成构图参考</h2><span class="caption">SYNTHETIC / 非实拍、不可交付</span></div></div><div id="references" class="candidates"></div></section>
+    <footer class="page-footer"><span>FLIGHT / PHOTOGRAPHY LAB</span><span>观察 · 决策 · 行动 · 复核</span><span>实时观测 / 历史回放</span></footer>
+  </main>
+
+  <dialog id="shot-dialog" class="shot-dialog"><div class="dialog-heading"><div><span class="eyebrow">PHOTO / PROVENANCE & SELF-REVIEW</span><h2 id="shot-title">候选照片</h2></div><button id="close-dialog" class="icon-button" aria-label="关闭照片" title="关闭 (Esc)">×</button></div><div class="dialog-body"><div class="dialog-image-wrap"><img id="shot-image" alt="候选照片完整画面"></div><div id="shot-assessment" class="shot-assessment"></div></div></dialog>
+</body>
+</html>
