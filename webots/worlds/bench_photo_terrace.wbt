@@ -1,0 +1,106 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "../protos/PhotographyTerrace.proto"
+EXTERNPROTO "../protos/TerraceSubject.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/dji/mavic/protos/Mavic2Pro.proto"
+
+WorldInfo {
+  title "Coastal Terrace | Drone Photography"
+  info [
+    "A 10 x 10 m coastal portrait set. Central flight corridor is free of furniture."
+    "Launch with the v1 CLI --scenario terrace for an explicit agent mission."
+    "Scene geometry and assets copied from v0; v1 RGB agent and independent truth recorder."
+  ]
+  basicTimeStep 16
+  defaultDamping Damping { linear .5 angular .5 }
+}
+DEF OVERVIEW Viewpoint {
+  orientation -.285338976 .285338976 .914966304 1.659547624
+  position -.3 -11 8
+  fieldOfView .8
+  exposure 1
+  ambientOcclusionRadius 1
+  bloomThreshold -1
+}
+Background {
+  backUrl ["../assets_created/terrace/sunny_sky_back.jpg"]
+  bottomUrl ["../assets_created/terrace/sunny_sky_bottom.jpg"]
+  frontUrl ["../assets_created/terrace/sunny_sky_front.jpg"]
+  leftUrl ["../assets_created/terrace/sunny_sky_left.jpg"]
+  rightUrl ["../assets_created/terrace/sunny_sky_right.jpg"]
+  topUrl ["../assets_created/terrace/sunny_sky_top.jpg"]
+  backIrradianceUrl ["../assets_created/terrace/sunny_sky_back.hdr"]
+  bottomIrradianceUrl ["../assets_created/terrace/sunny_sky_bottom.hdr"]
+  frontIrradianceUrl ["../assets_created/terrace/sunny_sky_front.hdr"]
+  leftIrradianceUrl ["../assets_created/terrace/sunny_sky_left.hdr"]
+  rightIrradianceUrl ["../assets_created/terrace/sunny_sky_right.hdr"]
+  topIrradianceUrl ["../assets_created/terrace/sunny_sky_top.hdr"]
+  luminosity .4
+}
+DirectionalLight {
+  direction 0.72038940 0.49526771 -0.48553990
+  color 1 .80 .56
+  intensity 3
+  castShadows TRUE
+}
+DirectionalLight {
+  direction .65 -.75 -.25
+  color .65 .80 1
+  intensity .10
+  castShadows FALSE
+}
+Fog { color .52 .70 .83 visibilityRange 10000 }
+PhotographyTerrace { }
+DEF PERSON_B TerraceSubject { }
+DEF DRONE Mavic2Pro {
+  translation -4.2 0 .1
+  rotation 0 0 1 0
+  name "drone_agent"
+  controller "rgb_agent"
+  bodySlot [
+    Camera {
+      translation .05 .006 -.031
+      name "navigation camera"
+      width 960
+      height 720
+      fieldOfView 1.2252
+      near .05
+      exposure 1
+      antiAliasing TRUE
+      ambientOcclusionRadius .5
+      bloomThreshold -1
+    }
+  ]
+  cameraSlot [
+    Camera {
+      width 960
+      height 720
+      fieldOfView 1.2252
+      near .05
+      exposure 1
+      antiAliasing TRUE
+      ambientOcclusionRadius .5
+      bloomThreshold -1
+    }
+  ]
+}
+# The v1 supervisor records evaluator-only truth; no predefined portrait views are generated.
+DEF BENCH_SUPERVISOR Robot {
+  translation -1.8 0 1.15
+  name "terrace_scene_preview"
+  supervisor TRUE
+  controller "truth_recorder"
+  children [
+    Camera {
+      name "portrait_preview"
+      width 960
+      height 720
+      fieldOfView 1.2252
+      near .05
+      exposure 1
+      antiAliasing TRUE
+      ambientOcclusionRadius .5
+      bloomThreshold -1
+    }
+  ]
+}

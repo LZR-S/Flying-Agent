@@ -1,0 +1,92 @@
+{
+  "source_height_m": 1.7000000476837158,
+  "source_triangles": 3076173,
+  "height_m": 1.7000000476837158,
+  "bounds_m": [
+    [
+      -0.2911350429058075,
+      -0.21043972671031952,
+      0.0
+    ],
+    [
+      0.29349806904792786,
+      0.2170264720916748,
+      1.7000000476837158
+    ]
+  ],
+  "triangles": 199999,
+  "parts": [
+    {
+      "file": "subject_01.obj",
+      "triangles": 18000
+    },
+    {
+      "file": "subject_02.obj",
+      "triangles": 18000
+    },
+    {
+      "file": "subject_03.obj",
+      "triangles": 18000
+    },
+    {
+      "file": "subject_04.obj",
+      "triangles": 18000
+    },
+    {
+      "file": "subject_05.obj",
+      "triangles": 18000
+    },
+    {
+      "file": "subject_06.obj",
+      "triangles": 18000
+    },
+    {
+      "file": "subject_07.obj",
+      "triangles": 18000
+    },
+    {
+      "file": "subject_08.obj",
+      "triangles": 18000
+    },
+    {
+      "file": "subject_09.obj",
+      "triangles": 18000
+    },
+    {
+      "file": "subject_10.obj",
+      "triangles": 18000
+    },
+    {
+      "file": "subject_11.obj",
+      "triangles": 18000
+    },
+    {
+      "file": "subject_12.obj",
+      "triangles": 1999
+    }
+  ],
+  "coordinates": "metres; Z up; front -Y; feet at Z=0",
+  "source": "webots/assets_created/Ada_Wang/Meshy_AI_Crimson_Operative_0915131054_texture.glb",
+  "source_sha256": "f10e9e299e9b0760ffc00f77ea7ff98db3a7c55728c2cf29fe340cebbda38c29",
+  "texture_max_size": 4096,
+  "material": "glTF PBR: base color, tangent-space normal, roughness G, metallic B",
+  "license": "User-provided Meshy asset; original usage terms apply.",
+  "texture_dimensions": {
+    "base_color": [
+      4096,
+      4096
+    ],
+    "normal": [
+      4096,
+      4096
+    ],
+    "roughness": [
+      2048,
+      2048
+    ],
+    "metalness": [
+      2048,
+      2048
+    ]
+  }
+}

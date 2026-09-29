@@ -1,0 +1,212 @@
+#VRML_SIM R2025a utf8
+# template language: javascript
+# Coastal portrait set. Floor top is z=0; the ocean-facing edge is x=4.7.
+
+PROTO PhotographyTerrace [
+]
+{
+  Group {
+    children [
+      DEF TERRACE_DECK Solid {
+        translation -0.3 0 -0.16
+        children [
+          Shape {
+            appearance DEF STONE PBRAppearance {
+              baseColor 0.92 0.89 0.82
+              baseColorMap ImageTexture { url ["../assets_created/terrace/stone_warm.jpg"] }
+              roughnessMap ImageTexture { url ["../assets_created/terrace/stone_rough.jpg"] }
+              normalMap ImageTexture { url ["../assets_created/terrace/stone_nor_gl.jpg"] }
+              normalMapFactor 0.3
+              metalness 0
+              textureTransform TextureTransform { scale 5 5 }
+            }
+            geometry Box { size 10 10 0.32 }
+          }
+        ]
+        name "terrace deck"
+        boundingObject Box { size 10 10 0.32 }
+      }
+      # Shallow stone joints are visual only; the deck collision remains continuous.
+      %< for (let x = -4.3; x < 4.7; x += 1.25) { >%
+      Pose {
+        translation %<= x >% 0 0.001
+        children [ Shape {
+          appearance DEF GROUT PBRAppearance { baseColor 0.51 0.51 0.47 roughness 1 metalness 0 }
+          geometry Box { size 0.006 10 0.002 }
+        } ]
+      }
+      %< } >%
+      %< for (let y = -3.75; y < 5; y += 1.25) { >%
+      Pose {
+        translation -0.3 %<= y >% 0.001
+        children [ Shape { appearance USE GROUT geometry Box { size 10 0.006 0.002 } } ]
+      }
+      %< } >%
+      # Solid base, tinted glass and a handrail all have matching physical barriers.
+      Solid {
+        translation 4.57 0 0.14
+        children [ Shape {
+          appearance DEF PLASTER PBRAppearance { baseColor 0.77 0.76 0.69 roughness 0.92 metalness 0 }
+          geometry Box { size 0.26 10 0.28 }
+        } ]
+        name "seafront parapet"
+        boundingObject Box { size 0.26 10 0.28 }
+      }
+      Solid {
+        translation 4.57 0 0.6
+        children [ Shape {
+          appearance PBRAppearance { baseColor .94 .98 1 transparency .98 roughness .1 metalness 0 }
+          geometry Box { size .035 9.94 .64 }
+        } ]
+        name "tinted glass windscreen"
+        boundingObject Box { size .035 9.94 .64 }
+      }
+      Solid {
+        translation 4.57 0 .93
+        children [ Shape {
+          appearance DEF RAIL PBRAppearance { baseColor .28 .29 .26 metalness .4 roughness .5 }
+          geometry Box { size .07 10 .045 }
+        } ]
+        name "seafront handrail"
+        boundingObject Box { size .07 10 .045 }
+      }
+      %< for (const y of [-4.6,-2.3,2.3,4.6]) { >%
+      Solid {
+        translation 4.57 %<= y >% .6
+        children [ Shape { appearance USE RAIL geometry Box { size .04 .035 .64 } } ]
+        name %<= '"rail post ' + y + '"' >%
+        boundingObject Box { size .04 .035 .64 }
+      }
+      %< } >%
+      %< for (const y of [-4.87,4.87]) { >%
+      Solid {
+        translation -0.3 %<= y >% 0.44
+        children [ Shape { appearance USE PLASTER geometry Box { size 10 0.26 0.88 } } ]
+        name %<= '"side parapet ' + y + '"' >%
+        boundingObject Box { size 10 0.26 0.88 }
+      }
+      %< } >%
+      # Side planters and olive canopies leave the central 5 m corridor clear.
+      %< for (const [x,y,scale] of [[2.9,-3.65,1], [3.15,3.65,1.12], [-3.9,3.7,0.95]]) { >%
+      Solid {
+        translation %<= x >% %<= y >% 0
+        children [
+          Pose {
+            translation 0 0 0.27
+            children [ Shape { appearance USE PLASTER geometry Box { size 1.2 1.2 0.54 } } ]
+          }
+          Pose {
+            translation 0 0 0.546
+            children [ Shape {
+              appearance PBRAppearance { baseColor 0.12 0.105 0.075 roughness 1 metalness 0 }
+              geometry Box { size 1.03 1.03 0.01 }
+            } ]
+          }
+          Transform {
+            translation 0 0 0.54
+            scale %<= scale >% %<= scale >% %<= scale >%
+            children [
+              Pose {
+                translation 0 0 0.65
+                children [ Shape {
+                  appearance DEF BARK PBRAppearance { baseColor 0.25 0.21 0.16 roughness 1 metalness 0 }
+                  geometry Cylinder { height 1.3 radius 0.045 subdivision 12 }
+                } ]
+              }
+              %< for (const [angle,lean] of [[0,.45],[2.1,.5],[4.3,.4]]) { >%
+              Pose {
+                translation 0 0 0.92
+                rotation %<= -Math.sin(angle) >% %<= Math.cos(angle) >% 0 %<= lean >%
+                children [ Pose {
+                  translation 0 0 0.26
+                  children [ Shape { appearance USE BARK geometry Cylinder { height .65 radius .019 subdivision 8 } } ]
+                } ]
+              }
+              %< } >%
+              %< for (let index=0; index<3; ++index) { >%
+              Shape {
+                appearance PBRAppearance {
+                  baseColor %<= [[.23,.32,.18],[.32,.4,.23],[.43,.47,.3]][index].join(' ') >%
+                  roughness 0.9
+                  metalness 0
+                }
+                geometry Mesh { url [%<= '"../assets_created/terrace/olive_leaves_' + index + '.obj"' >%] }
+              }
+              %< } >%
+            ]
+          }
+        ]
+        name %<= '"olive planter ' + x + ' ' + y + '"' >%
+        boundingObject Group {
+          children [
+            Pose { translation 0 0 0.27 children [ Box { size 1.2 1.2 .54 } ] }
+            Pose { translation 0 0 1.65 children [ Capsule { height 1.15 radius .62 } ] }
+          ]
+        }
+      }
+      %< } >%
+      # A low timber bench and a plaster screen provide a second portrait background.
+      Solid {
+        translation -1.25 4.15 0
+        children [
+          %< for (const y of [-.24,-.08,.08,.24]) { >%
+          Pose {
+            translation 0 %<= y >% .45
+            children [ Shape {
+              appearance DEF TIMBER PBRAppearance { baseColor .34 .22 .135 roughness .8 metalness 0 }
+              geometry Box { size 2.5 .14 .075 }
+            } ]
+          }
+          %< } >%
+          %< for (const x of [-.95,.95]) { >%
+          Pose {
+            translation %<= x >% 0 .215
+            children [ Shape {
+              appearance DEF BRONZE PBRAppearance { baseColor .16 .18 .17 roughness .7 metalness .35 }
+              geometry Box { size .09 .58 .43 }
+            } ]
+          }
+          %< } >%
+        ]
+        name "timber bench"
+        boundingObject Group {
+          children [
+            Pose { translation 0 0 .45 children [ Box { size 2.5 .62 .075 } ] }
+            Pose { translation -.95 0 .215 children [ Box { size .09 .58 .43 } ] }
+            Pose { translation .95 0 .215 children [ Box { size .09 .58 .43 } ] }
+          ]
+        }
+      }
+      Solid {
+        translation -4.97 0 1.25
+        children [ Shape { appearance USE PLASTER geometry Box { size .25 9.75 2.5 } } ]
+        name "rear plaster screen"
+        boundingObject Box { size .25 9.75 2.5 }
+      }
+      # Rear-wall launch pad; the rotor sweep clears the inner wall by about 0.35 m.
+      Pose {
+        translation -4.2 0 .004
+        children [ Shape {
+          appearance PBRAppearance { baseColor .36 .4 .39 roughness 1 metalness 0 }
+          geometry Cylinder { radius .42 height .006 subdivision 48 }
+        } ]
+      }
+      # Ocean is far below the terrace. It is scenery, not a flight/landing surface.
+      Pose {
+        translation 500 0 -5
+        children [ Shape {
+          appearance PBRAppearance {
+            baseColor .05 .40 .60
+            metalness 0
+            baseColorMap ImageTexture { url ["../assets_created/terrace/ocean_color.png"] }
+            roughnessMap ImageTexture { url ["../assets_created/terrace/ocean_roughness.png"] }
+            normalMap ImageTexture { url ["../assets_created/terrace/ocean_normal.png"] }
+            normalMapFactor .65
+            textureTransform TextureTransform { scale 120 150 }
+          }
+          geometry Box { size 2400 3000 .3 }
+        } ]
+      }
+    ]
+  }
+}

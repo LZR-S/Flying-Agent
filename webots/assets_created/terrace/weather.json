@@ -1,0 +1,20 @@
+{
+  "source": "https://polyhaven.com/a/autumn_field_puresky",
+  "source_sha256": "52e13951317a14f74d9c04d687368d702f1c0648b48265f17831310a95eba2e9",
+  "rotation_turns": 0.4465650161115789,
+  "sun_altitude_deg": 29.0478515625,
+  "sun_azimuth_deg": -145.4914770123316,
+  "sun_ray": [
+    0.72038940287202,
+    0.495267714474514,
+    -0.48553990487794696
+  ],
+  "sky_exposure": 0.8,
+  "sky_rgb_gain": [
+    0.42,
+    0.8,
+    1.6
+  ],
+  "environment_peak_cap": 4.0,
+  "coordinates": "Webots ENU; validated with +X, +Y and +Z camera views"
+}

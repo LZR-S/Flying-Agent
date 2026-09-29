@@ -1,0 +1,29 @@
+{
+  "license": "Poly Haven sources: CC0-1.0; procedural meshes: project-authored",
+  "sources": [
+    {
+      "file": "runs/webots/terrace-asset-build/autumn_field_puresky_4k.hdr",
+      "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/4k/autumn_field_puresky_4k.hdr",
+      "sha256": "52e13951317a14f74d9c04d687368d702f1c0648b48265f17831310a95eba2e9"
+    },
+    {
+      "file": "webots/assets_created/terrace/stone_diff.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/concrete_floor_02/concrete_floor_02_diff_1k.jpg",
+      "sha256": "6db84a6d87dc50508b9d134d6fbd2b7e876b8081a5f43a118a249ca18de73af5"
+    },
+    {
+      "file": "webots/assets_created/terrace/stone_rough.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/concrete_floor_02/concrete_floor_02_rough_1k.jpg",
+      "sha256": "c7f026a611b7859903c61ec7fd4574944157223e9e7796413dd6e2a66eaeac7a"
+    },
+    {
+      "file": "webots/assets_created/terrace/stone_nor_gl.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/concrete_floor_02/concrete_floor_02_nor_gl_1k.jpg",
+      "sha256": "fcda391b57a816d646ae15544688be53790478da5cd48dbe514b3c6901415e61"
+    }
+  ],
+  "sky_asset": "https://polyhaven.com/a/autumn_field_puresky",
+  "stone_asset": "https://polyhaven.com/a/concrete_floor_02",
+  "subject": "User-provided Meshy Ada Wang GLB. See ../Ada_Wang/webots/manifest.json for source hash and geometry.",
+  "processing": "Sky: 4K clear-sky HDRI with ENU orientation calibrated to the 29-degree sun, graded 1024px JPEG display faces, capped 128px HDR reflections. Ocean: deterministic 2K periodic spectral-wave normal, color modulation and roughness maps; seed 73; three wave bands. Stone: warm/desaturated derivative. Subject: 1.70 m, feet at z=0, 199,999 triangles split into 12 shadow-compatible meshes, 4K base-color/normal and 2K roughness/metalness textures."
+}

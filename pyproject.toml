@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+[project]
+name = "drone-photography-agent"
+version = "1.0.0"
+requires-python = ">=3.12"
+dependencies = ["numpy>=1.26", "opencv-python>=4.8", "httpx>=0.27", "pydantic>=2.7"]
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+tello = ["djitellopy==2.5.0"]
+[project.scripts]
+drone-agent = "drone_agent.cli:main"
+[tool.setuptools.packages.find]
+where = ["src"]
+[tool.setuptools.package-data]
+drone_agent = ["dashboard/*.html", "dashboard/*.css", "dashboard/*.js"]
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = "-q"

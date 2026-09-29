@@ -1,0 +1,78 @@
+#VRML_SIM R2025a utf8
+# Mesh is 1.70 m tall with feet at z=0. Local facing is -Y, matching the benchmark evaluator.
+PROTO TerraceSubject [
+  field SFVec3f translation 1.6 0 0
+  field SFRotation rotation 0 0 1 -1.57079632679
+]
+{
+  Solid {
+    translation IS translation
+    rotation IS rotation
+    children [
+      Shape {
+        appearance DEF ADA_MATERIAL PBRAppearance {
+          baseColorMap ImageTexture { url ["../assets_created/Ada_Wang/webots/base_color.png"] }
+          roughness 1
+          roughnessMap ImageTexture { url ["../assets_created/Ada_Wang/webots/roughness.png"] }
+          metalness 1
+          metalnessMap ImageTexture { url ["../assets_created/Ada_Wang/webots/metalness.png"] }
+          normalMap ImageTexture { url ["../assets_created/Ada_Wang/webots/normal.png"] }
+        }
+        geometry Mesh { url ["../assets_created/Ada_Wang/webots/subject_01.obj"] }
+      }
+      Shape {
+        appearance USE ADA_MATERIAL
+        geometry Mesh { url ["../assets_created/Ada_Wang/webots/subject_02.obj"] }
+      }
+      Shape {
+        appearance USE ADA_MATERIAL
+        geometry Mesh { url ["../assets_created/Ada_Wang/webots/subject_03.obj"] }
+      }
+      Shape {
+        appearance USE ADA_MATERIAL
+        geometry Mesh { url ["../assets_created/Ada_Wang/webots/subject_04.obj"] }
+      }
+      Shape {
+        appearance USE ADA_MATERIAL
+        geometry Mesh { url ["../assets_created/Ada_Wang/webots/subject_05.obj"] }
+      }
+      Shape {
+        appearance USE ADA_MATERIAL
+        geometry Mesh { url ["../assets_created/Ada_Wang/webots/subject_06.obj"] }
+      }
+      Shape {
+        appearance USE ADA_MATERIAL
+        geometry Mesh { url ["../assets_created/Ada_Wang/webots/subject_07.obj"] }
+      }
+      Shape {
+        appearance USE ADA_MATERIAL
+        geometry Mesh { url ["../assets_created/Ada_Wang/webots/subject_08.obj"] }
+      }
+      Shape {
+        appearance USE ADA_MATERIAL
+        geometry Mesh { url ["../assets_created/Ada_Wang/webots/subject_09.obj"] }
+      }
+      Shape {
+        appearance USE ADA_MATERIAL
+        geometry Mesh { url ["../assets_created/Ada_Wang/webots/subject_10.obj"] }
+      }
+      Shape {
+        appearance USE ADA_MATERIAL
+        geometry Mesh { url ["../assets_created/Ada_Wang/webots/subject_11.obj"] }
+      }
+      Shape {
+        appearance USE ADA_MATERIAL
+        geometry Mesh { url ["../assets_created/Ada_Wang/webots/subject_12.obj"] }
+      }
+    ]
+    name "Ada Wang"
+    boundingObject Group {
+      children [
+        Pose { translation 0 0 .95 children [ Capsule { height .70 radius .21 } ] }
+        Pose { translation 0 0 1.58 children [ Sphere { radius .12 } ] }
+        Pose { translation -.11 0 .35 children [ Capsule { height .50 radius .10 } ] }
+        Pose { translation .11 0 .35 children [ Capsule { height .50 radius .10 } ] }
+      ]
+    }
+  }
+}
