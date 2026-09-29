@@ -73,25 +73,25 @@ Edit the local `.env` file with your endpoint and API key:
 
 | Provider | Configuration | Where to select it |
 | --- | --- | --- |
-| OpenLux | `BASE_URL` / `API_KEY` | Default for the CLI with `--env-file .env`; also available in the workbench |
-| AliCloud | `AliCloud_url` / `AliCloud_key` | Select AliCloud in the workbench |
-| Custom | `DRONE_PHOTO_VLM_BASE_URL` / `DRONE_PHOTO_VLM_API_KEY` | Set in `.env` or the environment for the CLI; select Custom in the workbench |
+| OpenLux | `BASE_URL` / `API_KEY` | Default for the CLI with `--env-file .env`; also available in the Dashboard |
+| AliCloud | `AliCloud_url` / `AliCloud_key` | Select AliCloud in the Dashboard |
+| Custom | `DRONE_PHOTO_VLM_BASE_URL` / `DRONE_PHOTO_VLM_API_KEY` | Set in `.env` or the environment for the CLI; select Custom in the Dashboard |
 
 Choose a vision model with tool-calling support that is available through your provider. The CLI example below uses the current default, `gemini-3.6-flash`; change `--model` as needed. Model calls use your configured provider and incur its API charges. Credentials, virtual environments, and run records are excluded from Git.
 
-The optional composition-reference tool uses `gpt-image-2` through the Images Edits API. Its credentials default to `BASE_URL` / `API_KEY`, independently of the selected decision-model provider. To use a separate image provider, set both `DRONE_PHOTO_IMAGE_BASE_URL` and `DRONE_PHOTO_IMAGE_API_KEY`. If you only configure `DRONE_PHOTO_VLM_*`, configure image credentials separately to enable this tool. Missing image credentials do not prevent ordinary photography. Disable references with `--no-reference` or the workbench's reference-tool toggle. References are synthetic composition suggestions, not navigation evidence or deliverable photos.
+The optional composition-reference tool uses `gpt-image-2` through the Images Edits API. Its credentials default to `BASE_URL` / `API_KEY`, independently of the selected decision-model provider. To use a separate image provider, set both `DRONE_PHOTO_IMAGE_BASE_URL` and `DRONE_PHOTO_IMAGE_API_KEY`. If you only configure `DRONE_PHOTO_VLM_*`, configure image credentials separately to enable this tool. Missing image credentials do not prevent ordinary photography. Disable references with `--no-reference` or the Dashboard's reference-tool toggle. References are synthetic composition suggestions, not navigation evidence or deliverable photos.
 
 ## Usage
 
-### Workbench
+### Dashboard
 
 ```sh
 python -m drone_agent dashboard --port 8766 --env-file .env --open
 ```
 
-The workbench opens at <http://127.0.0.1:8766>; omit `--open` to skip opening a browser automatically. Select a scene, provider, model, and task, then start the run. The interface shows the live camera, tool calls, candidate photos, and historical reports. It defaults to English, with a persistent Chinese/English toggle in the top bar.
+The dashboard opens at <http://127.0.0.1:8766>; omit `--open` to skip opening a browser automatically. Select a scene, provider, model, and task, then start the run. The interface shows the live camera, tool calls, candidate photos, and historical reports. It defaults to English, with a persistent Chinese/English toggle in the top bar.
 
-The workbench launches **Webots simulation** and replays existing runs. Use the CLI below to launch Tello hardware. See the [workbench guide](docs/workbench.md) for controls and report downloads. Restart an existing workbench service after updating the code.
+The Dashboard launches **Webots simulation** and replays existing runs. Use the CLI below to launch Tello hardware. See the [Dashboard guide](docs/Dashboard.md) for controls and report downloads. Restart an existing Dashboard service after updating the code.
 
 ### Webots command line
 
@@ -147,12 +147,6 @@ Offline tests do not launch Webots or call model APIs. With `.[dev,tello]` insta
 
 The repository includes the standalone v1 runtime. The frozen legacy snapshot at `baseline/v0/` is not distributed; tests requiring that snapshot are skipped when it is absent. The historical `benchmark` command requires the snapshot separately.
 
-## Technical documentation
-
-- [Model tool protocol and context](docs/native-tools.md)
-- [Photography workbench](docs/workbench.md)
-- [Tello action contract and simulation boundaries](docs/tello-profile.md)
-- [Scene asset manifest](configs/assets.json)
 
 ## Roadmap
 
