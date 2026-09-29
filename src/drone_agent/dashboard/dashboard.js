@@ -1,6 +1,6 @@
 const $ = id => document.getElementById(id);
 const english = {
-  'Flight / v1 摄影观测台':'Flight / v1 Photography Console',
+  'Flight / v0.1 摄影观测台':'Flight / v0.1 Photography Console',
   'Flight 观测台首页':'Flight console home',
   '摄影观测台':'Photography Console','连接中':'Connecting','本地在线':'Local Online','连接中断':'Disconnected',
   'Webots 任务控制':'Webots Mission Control','读取状态':'Loading status','正在连接控制服务…':'Connecting to control service…',
@@ -82,7 +82,7 @@ function localizePage() {
   const buttonLabel=language==='en'?'Switch to Chinese':'切换到英文';
   if(button.textContent!==buttonText)button.textContent=buttonText;
   if(button.getAttribute('aria-label')!==buttonLabel)button.setAttribute('aria-label',buttonLabel);
-  const title='Flight / v1 摄影观测台';document.title=translate(title);
+  const title='Flight / v0.1 摄影观测台';document.title=translate(title);
   const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
   while(walker.nextNode()) {
     const node=walker.currentNode;

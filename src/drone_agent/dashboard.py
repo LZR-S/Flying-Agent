@@ -1,4 +1,4 @@
-"""Local v1 workbench: bounded replay, immutable media, same-origin task controls."""
+"""Local v0.1 workbench: bounded replay, immutable media, same-origin task controls."""
 import base64
 import html
 import json
@@ -343,7 +343,7 @@ def serve(directory, port=8766, env_file=None, open_browser=False):
     import webbrowser
     server = make_server(directory,port,env_file)
     url = f'http://127.0.0.1:{server.server_port}'
-    print('v1 workbench: '+url,flush=True)
+    print('v0.1 workbench: '+url,flush=True)
     if open_browser:
         webbrowser.open(url)
     try:

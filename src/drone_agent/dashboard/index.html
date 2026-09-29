@@ -4,19 +4,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#0e1117">
-  <title>Flight / v1 摄影观测台</title>
+  <title>Flight / v0.1 摄影观测台</title>
   <link rel="stylesheet" href="/assets/dashboard.css">
   <script type="module" src="/assets/dashboard.js"></script>
 </head>
 <body>
   <header class="topbar">
     <a class="brand" href="/" aria-label="Flight 观测台首页"><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M4 5h10v10H4zM22 5h10v10H22zM4 23h10v10H4zM22 23h10v10H22zM9 10l18 18M27 10L9 28"/></svg><span>FLIGHT<span class="brand-divider">/</span><span class="brand-sub">摄影观测台</span></span></a>
-    <div class="topbar-right"><span class="local-control">WEBOTS / V1</span><span class="connection" id="connection"><i></i><span id="connection-text">连接中</span></span><time id="wall-clock">--:--:--</time><button id="language-toggle" class="language-toggle" type="button" aria-label="Switch to Chinese">中文</button></div>
+    <div class="topbar-right"><span class="local-control">WEBOTS / V0.1</span><span class="connection" id="connection"><i></i><span id="connection-text">连接中</span></span><time id="wall-clock">--:--:--</time><button id="language-toggle" class="language-toggle" type="button" aria-label="Switch to Chinese">中文</button></div>
   </header>
 
   <main>
     <section class="control-panel panel" aria-labelledby="control-heading">
-      <div class="control-heading"><div class="control-title"><span class="control-indicator"></span><h2 id="control-heading">Webots 任务控制</h2><span class="caption">V1 / RGB AGENT</span></div><div class="control-status" role="status"><span id="control-state" class="status-tag">读取状态</span><span id="control-message">正在连接控制服务…</span></div></div>
+      <div class="control-heading"><div class="control-title"><span class="control-indicator"></span><h2 id="control-heading">Webots 任务控制</h2><span class="caption">V0.1 / RGB AGENT</span></div><div class="control-status" role="status"><span id="control-state" class="status-tag">读取状态</span><span id="control-message">正在连接控制服务…</span></div></div>
       <form id="mission-form" class="command-form">
         <div class="command-input"><label class="brief-label" for="control-brief">摄影指令 <span>描述主体、范围与构图</span></label><textarea id="control-brief" rows="2" maxlength="2000" required>找到人物，拍一张2:3竖幅半身照，从头顶到大腿，保留头发、手和手持物</textarea>
           <div class="mission-settings"><label>场景<select id="control-scene"><option value="terrace">Terrace · 露台</option><option value="facing">Facing · 正面</option><option value="open">Open · 开阔</option><option value="hidden">Hidden · 隐藏</option></select></label><label>模型接口<select id="control-provider"></select></label><label>模型<input id="control-model" value="gemini-3.6-flash" maxlength="100" required></label><label>预算（秒）<input id="control-duration" type="number" min="30" max="1800" value="900" required></label></div>

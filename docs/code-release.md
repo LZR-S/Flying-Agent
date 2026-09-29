@@ -1,6 +1,6 @@
-# Photography harness source
+# Photography harness source · v0.1
 
-This repository includes the RGB-driven drone photography harness, its Webots R2025a scenarios, and a DJI Tello backend. The harness code is licensed under Apache-2.0; see [LICENSE](../LICENSE). Scene assets retain their own terms, documented in [asset licenses](asset-licenses.md).
+The current public release is v0.1. It includes the initial RGB-driven drone photography harness, its Webots R2025a scenarios, and a DJI Tello backend. The harness code is licensed under Apache-2.0; see [LICENSE](../LICENSE). Scene assets retain their own terms, documented in [asset licenses](asset-licenses.md).
 
 ## Install
 

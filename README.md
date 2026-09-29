@@ -8,7 +8,9 @@ Unlike the still far-from-mature forms of humanoid robots and robotic arms, **we
 
 Flying-Agent does not ask merely whether an AI agent can make a drone move. It asks whether **one complete agent system can use a drone as a general-purpose physical body to independently accomplish long-horizon agentic tasks with real-world outcomes**.
 
-We use a **DJI Tello**, relying on **first-person vision (FPV) for scene perception** in unfamiliar environments and carrying out natural-language photography tasks zero-shot. Given “Take a full-body photo of the man by the window,” the agent observes the scene, adjusts its viewpoint and composition online, captures a photograph, and lands. Drone photography is only the starting point.
+We use a **DJI Tello**, relying on **first-person vision (FPV) for scene perception** in unfamiliar environments and carrying out natural-language photography tasks zero-shot. Given “Take a full-body photo of the man by the window,” the agent observes the scene, adjusts its viewpoint and composition online, captures a photograph, and lands.
+
+The current public release is **v0.1**, which provides an initial set of photography-agent capabilities. Photography is a common, broadly useful application and a clear starting point for developing and evaluating an embodied agent. We plan to expand step by step into video and vlog creation, inspection, household assistance, companionship, entertainment, and other applications. The long-term goal is a general-purpose flying agent.
 
 ## Real-world flight demos
 
@@ -32,26 +34,26 @@ The [34-second coastal-terrace demo](https://lzr-s.github.io/Flying-Agent/#webot
 
 [Watch the Webots photography demo](https://lzr-s.github.io/Flying-Agent/#webots)
 
-## Photography agent harness
+## Photography agent harness · v0.1
 
 Our harness connects a multimodal agent to a shared task loop, flight tools, and camera feedback. The agent can search, re-find a subject, adjust composition, capture, review, and iterate. Recent visual observations and saved photos provide evidence for the next decision; search and composition are decisions within the same loop rather than separate fixed workflows.
 
 The harness has three cooperating parts:
 
-- **Visual-spatial memory:** keeps the current camera view, recent observations, and saved photos available for visual decisions without handing the agent a prebuilt map or target coordinates.
-- **Generative aesthetic design:** can produce an optional composition reference, then checks it against camera images. The agent adjusts viewpoint and uses the largest native crop of the requested aspect ratio when framing the shot.
-- **Safe and reliable execution:** validates tool calls, runs one flight command at a time, supervises control while the agent thinks, and records completed, rejected, or uncertain actions.
+- **Visual-spatial memory:** Keeps the current camera view, recent observations, and saved photos available for visual decisions without handing the agent a prebuilt map or target coordinates.
 
-The same task interface supports Webots simulation and DJI Tello hardware. Flight telemetry remains available to the controller and safety supervision; task-level scene decisions are grounded in camera images. The diagram describes the harness design; the videos above are separate demonstrations and should not be treated as identical runs.
+- **Generative aesthetic design:** Can produce an optional composition reference, then checks it against camera images. The agent adjusts viewpoint and uses the largest native crop of the requested aspect ratio when framing the shot.
+
+- **Safe and reliable execution:** Validates tool calls, runs one flight command at a time, supervises control while the agent thinks, and records completed, rejected, or uncertain actions.
+
+The same task interface supports Webots simulation and DJI Tello hardware. The Webots Mavic 2 Pro model contains simulated gimbal joints, but the v0.1 harness does not expose or control them; the DJI Tello itself has no gimbal. Both backends therefore operate as fixed-camera systems without agent-controllable gimbal movement, and the agent changes its viewpoint and composition by moving the aircraft. Flight telemetry remains available to the controller and safety supervision; task-level scene decisions are grounded in camera images. The diagram describes the harness design; the videos above are separate demonstrations and should not be treated as identical runs.
 
 ![Flying-Agent photography harness: visual-spatial memory, generative aesthetic design, and safe execution](assets/agent-harness-framework-v1.png)
 
-## Coming next
+## Roadmap
 
-We plan to release the photography harness source, reproducible Webots scenarios, more complete demo runs, and the documentation needed to inspect how a task was executed. We will keep improving the harness across perception, composition, and reliable flight.
+We plan to keep improving and updating the harness, publish more complete demonstrations, and provide documentation that lets others inspect how tasks were executed. Development will continue across perception, composition, and reliable flight.
 
-Our longer-term research plan is to open-source trained models and the data pipeline used to build them, and to add a **Jev-based System 1** for fast local decisions alongside the deliberative multimodal agent (**System 2**). The goal is to study how the two systems can cooperate during flight. These are planned releases and research directions, not capabilities claimed for the demos above.
+Our longer-term research plan includes open-sourcing models trained specifically for these tasks and their data pipelines, and developing the harness into a **System 2 & System 1 architecture**—for example, using Jev as System 1 for fast local capabilities such as obstacle avoidance and navigation, alongside the deliberative multimodal agent as **System 2**. We will study how the two systems can cooperate during flight. These are planned releases and research directions, not capabilities claimed for the demos above.
 
-Beyond photography, we want to explore inspection, companionship, entertainment, and collaboration among multiple robots. We welcome discussion and collaboration.
-
-**Code release: coming soon.** The repository currently contains the project overview and demos; the harness source and reproducibility materials will follow.
+Beyond photography, we will explore video and vlog creation, inspection, household assistance, companionship, entertainment, multi-robot collaboration, and more. Our goal is a general-purpose **Flying Agent**, and eventually a general-purpose **Phygital Agent**. We welcome discussion and collaboration.

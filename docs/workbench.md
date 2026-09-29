@@ -1,16 +1,16 @@
-# v1 摄影工作台
+# v0.1 摄影工作台
 
-工作台保留 v0 的深色布局，接入 v1 的公共观察、原生工具事件和照片证据。入口仅支持 Webots 和历史回放。
+工作台接入当前 Harness 的公共观察、原生工具事件和照片证据。入口仅支持 Webots 和历史回放。
 
 ## 启动
 
-在 v1 工程目录执行：
+在项目目录执行：
 
 ```sh
 PYTHONPATH=src .venv/bin/python -m drone_agent dashboard --port 8766 --env-file .env --open
 ```
 
-本地地址：<http://127.0.0.1:8766>。`--runs` 可指定运行记录根目录。默认凭据文件为 v1 `.env`；首次使用先复制 `.env.example` 为 `.env` 并填写凭据。
+本地地址：<http://127.0.0.1:8766>。`--runs` 可指定运行记录根目录。默认凭据文件为 `.env`；首次使用先复制 `.env.example` 为 `.env` 并填写凭据。
 
 - OpenLux 使用所选文件的 `BASE_URL` / `API_KEY`。
 - 阿里云官方使用 `AliCloud_url` / `AliCloud_key`，默认模型 `qwen3.8-flash`。

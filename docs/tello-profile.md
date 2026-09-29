@@ -1,6 +1,6 @@
 # Tello SDK 对齐配置
 
-当前 v1 使用 `tello-sdk-2-basic` 配置。适配范围是 Tello SDK 2.0 的基础指令子集；提供 Webots 与 Tello 两个后端；Tello 接入已做离线故障验证，尚未完成真机飞行验收。
+当前 v0.1 公开版本使用 `tello-sdk-2-basic` 配置。适配范围是 Tello SDK 2.0 的基础指令子集；提供 Webots 与 Tello 两个后端；Tello 接入已做离线故障验证，尚未完成真机飞行验收。
 
 ## 模型动作契约
 
