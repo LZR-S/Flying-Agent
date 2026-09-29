@@ -26,11 +26,11 @@ The rooftop demo shows a complete photography task on a real Tello. A library cl
 
 ## Webots photography demo
 
-The [34-second coastal-terrace demo](assets/webots-photography-cinematic.mp4) is a condensed, edited view of a Webots portrait task. It shows the agent using a composition reference, adjusting its camera viewpoint, comparing the live frame with the intended composition, and capturing a final portrait. The reference image is synthetic; the final photograph comes from the simulated camera. This demo focuses on **photographic judgment through action**: subject scale, framing, headroom, and background are changed by moving the drone, then checked against the real camera view.
+The [34-second coastal-terrace demo](https://lzr-s.github.io/Flying-Agent/#webots) is a condensed, edited view of a Webots portrait task. It shows the agent using a composition reference, adjusting its camera viewpoint, comparing the live frame with the intended composition, and capturing a final portrait. The reference image is synthetic; the final photograph comes from the simulated camera. This demo focuses on **photographic judgment through action**: subject scale, framing, headroom, and background are changed by moving the drone, then checked against the real camera view.
 
-<a href="assets/webots-photography-cinematic.mp4"><img src="assets/webots-photography-preview.jpg" alt="Final portrait in the Webots coastal-terrace photography demo" width="760"></a>
+<a href="https://lzr-s.github.io/Flying-Agent/#webots"><img src="assets/webots-photography-preview.jpg" alt="Final portrait in the Webots coastal-terrace photography demo" width="760"></a>
 
-[Watch the Webots photography demo](assets/webots-photography-cinematic.mp4)
+[Watch the Webots photography demo](https://lzr-s.github.io/Flying-Agent/#webots)
 
 ## Photography agent harness
 

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0b1016">
-  <meta name="description" content="Watch Flying-Agent: DJI Tello photography demos, with playback controls and fullscreen viewing.">
+  <meta name="description" content="Watch Flying-Agent photography demos: DJI Tello real flights and Webots simulation, with playback controls and fullscreen viewing.">
   <title>Flying-Agent / Flight recordings</title>
   <style>
     :root { color-scheme: dark; --bg: #0b1016; --line: #293440; --text: #eef3f6; --muted: #a2b0be; --accent: #9ee7df; }
@@ -56,7 +56,7 @@
     </header>
     <div class="intro">
       <div>
-        <p class="eyebrow mono">DJI Tello / FPV vision / Field demos</p>
+        <p class="eyebrow mono">DJI Tello / Webots / Photography demos</p>
         <h1>A body that can fly.</h1>
       </div>
       <p class="hint">Play. Scrub. Go fullscreen.<br><span lang="zh-CN">播放 · 拖动进度 · 全屏观看</span></p>
@@ -64,6 +64,7 @@
     <nav aria-label="Choose a demo / 选择演示">
       <a href="#rooftop" data-demo="rooftop" aria-current="true">01 / Rooftop · <span lang="zh-CN">天台</span></a>
       <a href="#library" data-demo="library">02 / Library · <span lang="zh-CN">图书馆</span></a>
+      <a href="#webots" data-demo="webots">03 / Webots · <span lang="zh-CN">仿真摄影</span></a>
     </nav>
     <div class="stage">
       <video id="player" controls playsinline preload="metadata" data-demo="rooftop" poster="assets/rooftop.jpg" aria-label="Rooftop photography demo / 天台摄影演示" src="https://github.com/LZR-S/Flying-Agent/releases/download/demo-v0.3/flying-agent-rooftop-minimal-electronic-4k.mp4">
@@ -94,12 +95,19 @@
         title: 'Look before moving / 先看再移动',
         description: 'Before moving backward into an area it has not yet seen clearly, the agent turns to check the space behind it. / 向尚未看清的后方移动前，先回头确认空间。',
         format: '1080p · 00:14 · Third-person view'
+      },
+      webots: {
+        source: 'https://github.com/LZR-S/Flying-Agent/releases/download/demo-webots-v0.1/webots-photography-cinematic.mp4',
+        title: 'Autonomous portrait photography / 自主构图摄影',
+        description: 'A condensed Webots portrait task: the agent compares a composition reference with camera images, adjusts its viewpoint, and captures the final portrait. / Webots 人像摄影剪辑：Agent 对照构图参考与相机画面、调整机位并拍摄最终照片。',
+        format: '1080p · 00:34 · Webots simulation'
       }
     };
     const player = document.getElementById('player');
     const error = document.getElementById('playback-error');
     function selectClip() {
-      const key = location.hash === '#library' ? 'library' : 'rooftop';
+      const requested = location.hash.slice(1);
+      const key = Object.hasOwn(clips, requested) ? requested : 'rooftop';
       const clip = clips[key];
       if (player.dataset.demo !== key) {
         player.pause();
