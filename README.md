@@ -50,6 +50,110 @@ The same task interface supports Webots simulation and DJI Tello hardware. The W
 
 ![Flying-Agent photography harness: visual-spatial memory, generative aesthetic design, and safe execution](assets/agent-harness-framework-v1.png)
 
+## Installation
+
+Requirements: **Python 3.12 or later**, [Git LFS](https://git-lfs.com/), and [Webots R2025a](https://github.com/cyberbotics/webots/releases/tag/R2025a) for simulation. The current launch workflow has been validated on macOS. Tello-only use does not require Webots.
+
+```sh
+git lfs install
+git clone https://github.com/LZR-S/Flying-Agent.git
+cd Flying-Agent
+git lfs pull
+python3.12 -m venv .venv
+source .venv/bin/activate
+python -m pip install -e '.[dev]'
+cp .env.example .env
+```
+
+Large GLB assets are stored in Git LFS. Use a Git clone followed by `git lfs pull`; downloading the GitHub source ZIP may leave these assets unavailable. Run the commands below from the repository root with the virtual environment activated.
+
+### API configuration
+
+Edit the local `.env` file with your endpoint and API key:
+
+| Provider | Configuration | Where to select it |
+| --- | --- | --- |
+| OpenLux | `BASE_URL` / `API_KEY` | Default for the CLI with `--env-file .env`; also available in the workbench |
+| AliCloud | `AliCloud_url` / `AliCloud_key` | Select AliCloud in the workbench |
+| Custom | `DRONE_PHOTO_VLM_BASE_URL` / `DRONE_PHOTO_VLM_API_KEY` | Set in `.env` or the environment for the CLI; select Custom in the workbench |
+
+Choose a vision model with tool-calling support that is available through your provider. The CLI example below uses the current default, `gemini-3.6-flash`; change `--model` as needed. Model calls use your configured provider and incur its API charges. Credentials, virtual environments, and run records are excluded from Git.
+
+The optional composition-reference tool uses `gpt-image-2` through the Images Edits API. Its credentials default to `BASE_URL` / `API_KEY`, independently of the selected decision-model provider. To use a separate image provider, set both `DRONE_PHOTO_IMAGE_BASE_URL` and `DRONE_PHOTO_IMAGE_API_KEY`. If you only configure `DRONE_PHOTO_VLM_*`, configure image credentials separately to enable this tool. Missing image credentials do not prevent ordinary photography. Disable references with `--no-reference` or the workbench's reference-tool toggle. References are synthetic composition suggestions, not navigation evidence or deliverable photos.
+
+## Usage
+
+### Workbench
+
+```sh
+python -m drone_agent dashboard --port 8766 --env-file .env --open
+```
+
+The workbench opens at <http://127.0.0.1:8766>; omit `--open` to skip opening a browser automatically. Select a scene, provider, model, and task, then start the run. The interface shows the live camera, tool calls, candidate photos, and historical reports. It defaults to English, with a persistent Chinese/English toggle in the top bar.
+
+The workbench launches **Webots simulation** and replays existing runs. Use the CLI below to launch Tello hardware. See the [workbench guide](docs/workbench.md) for controls and report downloads. Restart an existing workbench service after updating the code.
+
+### Webots command line
+
+```sh
+python -m drone_agent run \
+  --scenario hidden \
+  --model gemini-3.6-flash \
+  --brief 'Find the person and take a full-body photo' \
+  --env-file .env
+```
+
+The default backend is `webots`. Available scenes are `facing`, `open`, `hidden`, and `terrace`. The default simulator executable is `/Applications/Webots.app/Contents/MacOS/webots`; use `--webots /path/to/webots` for another installation. World files reference fixed R2025a PROTO sources, so the first load may require network access.
+
+### DJI Tello command line
+
+Install the optional hardware dependency in the same virtual environment:
+
+```sh
+python -m pip install -e '.[dev,tello]'
+```
+
+Power on the Tello and connect the computer to its Wi-Fi. Keep internet access available for the model API, for example through a separate network interface. The following command controls the real aircraft and can take off; run it in a clear flight area with an operator present.
+
+```sh
+python -m drone_agent run \
+  --backend tello \
+  --model gemini-3.6-flash \
+  --brief 'Find the person and take a full-body photo' \
+  --env-file .env
+```
+
+The default aircraft address is `192.168.10.1`; override it with `--tello-ip` if needed. See the [Tello action contract and backend notes](docs/tello-profile.md) for flight-command semantics and telemetry limitations.
+
+### Framing and output
+
+Both backends accept `--default-aspect-ratio` (default `16:9`), `--guides none|thirds|golden` (default `thirds`), and `--no-reference`. The default `--framing-policy max_native` keeps the largest native crop for the requested aspect ratio. Use `--framing-policy flexible` before launch only when the task permits smaller crops; the agent cannot switch this policy itself.
+
+Runs are saved under `runs/` with photos, model requests and responses, events, evaluation results, JSON/CSV exports, and an HTML report. Use `--output /path/to/run` to choose a new run directory. To regenerate an existing run's evaluation and reports, replace `RUN_ID` with its directory name:
+
+```sh
+python -m drone_agent evaluate runs/RUN_ID
+```
+
+For all CLI options, run `python -m drone_agent run --help`.
+
+## Offline tests
+
+```sh
+python -m pytest
+```
+
+Offline tests do not launch Webots or call model APIs. With `.[dev,tello]` installed, they also test the real DJITelloPy receiver code using mocked network transport, without connecting to an aircraft. Without that optional dependency, only the SDK receiver tests are skipped; the remaining Tello fault tests still run.
+
+The repository includes the standalone v1 runtime. The frozen legacy snapshot at `baseline/v0/` is not distributed; tests requiring that snapshot are skipped when it is absent. The historical `benchmark` command requires the snapshot separately.
+
+## Technical documentation
+
+- [Model tool protocol and context](docs/native-tools.md)
+- [Photography workbench](docs/workbench.md)
+- [Tello action contract and simulation boundaries](docs/tello-profile.md)
+- [Scene asset manifest](configs/assets.json)
+
 ## Roadmap
 
 We plan to keep improving and updating the harness, publish more complete demonstrations, and provide documentation that lets others inspect how tasks were executed. Development will continue across perception, composition, and reliable flight.
