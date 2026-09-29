@@ -2,13 +2,13 @@
 
 English · [简体中文](README.zh-CN.md)
 
-Complete frontier AI agent systems are increasingly able to carry out complex, long-horizon work in digital environments, including automated programming and research. A more fundamental question remains: **can they do the same when work takes place in ordinary people's physical lives?** Physical tasks cannot be completed by querying a complete state at every moment. An agent must find information through vision and other forms of perception, move through space, execute multiple steps continuously to completion, and take responsibility for omissions, change, failure, and safety consequences.
+End-to-end agent systems powered by frontier AI models are increasingly able to carry out complex, long-horizon work in digital environments, including automated programming and research. A more fundamental question remains: **can they do the same when work takes place in people's everyday physical environments?** Physical tasks cannot be completed by querying a complete state at every moment. An agent must find information through vision and other forms of perception, move through space, execute multiple steps continuously to completion, and take responsibility for omissions, change, failure, and safety consequences.
 
-Unlike the still far-from-mature forms of humanoid robots and robotic arms, **we want to give AI agents a body that can move and fly in real 3D space: a drone.** We aim to explore the limits and application frontiers of agents with mobile embodiments.
+Unlike the still far-from-mature forms of humanoid robots and robotic arms, **we want to give AI agents a body that can move and fly in real 3D space: a drone.** We aim to explore the limits and potential applications of agents with mobile physical bodies.
 
 Flying-Agent does not ask merely whether an AI agent can make a drone move. It asks whether **one complete agent system can use a drone as a general-purpose physical body to independently accomplish long-horizon agentic tasks with real-world outcomes**.
 
-We use a **DJI Tello**, relying on **first-person vision (FPV) for scene perception** in unfamiliar environments and carrying out natural-language photography tasks zero-shot. Given “Take a full-body photo of the man by the window,” the agent observes the scene, adjusts its viewpoint and composition online, captures a photograph, and lands.
+We use a **DJI Tello**, relying on **first-person view (FPV) for scene perception** in unfamiliar environments and carrying out natural-language photography tasks zero-shot. Given “Take a full-body photo of the man by the window,” the agent observes the scene, adjusts its viewpoint and composition online, captures a photograph, and lands.
 
 The current public release is **v0.1**, which provides an initial set of photography-agent capabilities. Photography is a common, broadly useful application and a clear starting point for developing and evaluating an embodied agent. We plan to expand step by step into video and vlog creation, inspection, household assistance, companionship, entertainment, and other applications. The long-term goal is a general-purpose flying agent.
 
@@ -28,7 +28,7 @@ The rooftop demo shows a complete photography task on a real Tello. A library cl
 
 ## Webots photography demo
 
-The [34-second coastal-terrace demo](https://lzr-s.github.io/Flying-Agent/#webots) is a condensed, edited view of a Webots portrait task. It shows the agent using a composition reference, adjusting its camera viewpoint, comparing the live frame with the intended composition, and capturing a final portrait. The reference image is synthetic; the final photograph comes from the simulated camera. This demo focuses on **photographic judgment through action**: subject scale, framing, headroom, and background are changed by moving the drone, then checked against the real camera view.
+The [34-second coastal-terrace demo](https://lzr-s.github.io/Flying-Agent/#webots) is a condensed, edited view of a Webots portrait task. It shows the agent using a composition reference, adjusting its camera viewpoint, comparing the live frame with the intended composition, and capturing a final portrait. The reference image is synthetic; the final photograph comes from the simulated camera. This demo focuses on **photographic judgment through action**: subject scale, framing, headroom, and background are changed by moving the drone, then checked against the simulated camera feed.
 
 <a href="https://lzr-s.github.io/Flying-Agent/#webots"><img src="assets/webots-photography-preview.gif" alt="Animated excerpts from the Webots coastal-terrace photography demo" width="760"></a>
 
@@ -36,7 +36,7 @@ The [34-second coastal-terrace demo](https://lzr-s.github.io/Flying-Agent/#webot
 
 ## Photography agent harness · v0.1
 
-Our harness connects a multimodal agent to a shared task loop, flight tools, and camera feedback. The agent can search, re-find a subject, adjust composition, capture, review, and iterate. Recent visual observations and saved photos provide evidence for the next decision; search and composition are decisions within the same loop rather than separate fixed workflows.
+Our harness connects a multimodal agent to a shared task loop, flight tools, and camera feedback. The agent can search, locate a subject again, adjust composition, capture, review, and iterate. Recent visual observations and saved photos provide evidence for the next decision; search and composition are decisions within the same loop rather than separate fixed workflows.
 
 The harness has three cooperating parts:
 
@@ -79,7 +79,7 @@ Edit the local `.env` file with your endpoint and API key:
 
 Choose a vision model with tool-calling support that is available through your provider. The CLI example below uses the current default, `gemini-3.6-flash`; change `--model` as needed. Model calls use your configured provider and incur its API charges. Credentials, virtual environments, and run records are excluded from Git.
 
-The optional composition-reference tool uses `gpt-image-2` through the Images Edits API. Its credentials default to `BASE_URL` / `API_KEY`, independently of the selected decision-model provider. To use a separate image provider, set both `DRONE_PHOTO_IMAGE_BASE_URL` and `DRONE_PHOTO_IMAGE_API_KEY`. If you only configure `DRONE_PHOTO_VLM_*`, configure image credentials separately to enable this tool. Missing image credentials do not prevent ordinary photography. Disable references with `--no-reference` or the Dashboard's reference-tool toggle. References are synthetic composition suggestions, not navigation evidence or deliverable photos.
+The optional composition-reference tool uses `gpt-image-2` through the image editing API. Its credentials default to `BASE_URL` / `API_KEY`, independently of the selected decision-model provider. To use a separate image provider, set both `DRONE_PHOTO_IMAGE_BASE_URL` and `DRONE_PHOTO_IMAGE_API_KEY`. If you only configure `DRONE_PHOTO_VLM_*`, configure image credentials separately to enable this tool. Missing image credentials do not prevent ordinary photography. Disable references with `--no-reference` or the dashboard's reference-tool toggle. References are synthetic composition suggestions, not navigation evidence or deliverable photos.
 
 ## Usage
 
@@ -89,9 +89,9 @@ The optional composition-reference tool uses `gpt-image-2` through the Images Ed
 python -m drone_agent dashboard --port 8766 --env-file .env --open
 ```
 
-The dashboard opens at <http://127.0.0.1:8766>; omit `--open` to skip opening a browser automatically. Select a scene, provider, model, and task, then start the run. The interface shows the live camera, tool calls, candidate photos, and historical reports. It defaults to English, with a persistent Chinese/English toggle in the top bar.
+The dashboard opens at <http://127.0.0.1:8766>; omit `--open` to skip opening a browser automatically. Select a scene, provider, model, and task, then start the run. The interface shows the live camera feed, tool calls, candidate photos, and reports from previous runs. It defaults to English, with a persistent Chinese/English toggle in the top bar.
 
-The Dashboard launches **Webots simulation** and replays existing runs. Use the CLI below to launch Tello hardware. See the [Dashboard guide](docs/Dashboard.md) for controls and report downloads. Restart an existing Dashboard service after updating the code.
+The dashboard launches **Webots simulations** and replays existing runs. Use the CLI below to run a task on a real Tello. See the [dashboard guide](docs/workbench.md) for controls and report downloads. Restart the dashboard after updating the code.
 
 ### Webots command line
 

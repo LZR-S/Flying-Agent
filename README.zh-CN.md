@@ -147,13 +147,6 @@ python -m pytest
 
 仓库独立提供 v1 运行时，不分发旧版冻结快照 `baseline/v0/`；缺少该快照时，仅跳过依赖它的测试。历史 `benchmark` 对照入口需要另行准备该快照。
 
-## 技术文档
-
-- [模型工具协议与上下文](docs/native-tools.md)
-- [摄影工作台](docs/workbench.md)
-- [Tello 动作契约与仿真边界](docs/tello-profile.md)
-- [场景资产清单](configs/assets.json)
-
 ## 后续计划
 
 我们计划持续完善和更新 Harness，公开更多完整演示，以及供外部检查任务执行过程的文档。Harness 也会持续围绕感知、构图和可靠飞行改进。
